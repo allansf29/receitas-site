@@ -2,30 +2,45 @@ import Carousel from "../../components/Carousel";
 import imageSalada from "../../assets/img/imageSalada.png";
 import imageKibe from "../../assets/img/imageKibe.png";
 import imageBaiao from "../../assets/img/imageBaiao.png";
+import Modal from "../../components/Modal";
+import { ArrowRightIcon } from "../../assets/icons/SvgIcon";
+import { useState } from "react";
 
-function Home() {
+type Recipe = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  time: number;
+};
 
-  const recipes = [
+export default function Home() {
+  const recipes: Recipe[] = [
     {
       id: Math.random().toString(36).substring(2, 15),
       title: "Baião de Dois",
       description: "Delicious Baião de Dois recipe with a mix of rice, beans, and spices.",
-      image: imageBaiao
+      image: imageBaiao,
+      time: 30
     },
     {
       id: Math.random().toString(36).substring(2, 15),
       title: "Yakisoba",
       description: "Delicious Yakisoba recipe with a savory stir-fry and vegetables.",
-      image: imageSalada
+      image: imageSalada,
+      time: 30
     },
     {
       id: Math.random().toString(36).substring(2, 15),
       title: "Kibe de Forno",
       description: "Delicious Kibe de Forno recipe with a crispy crust and savory filling.",
-      image: imageKibe
+      image: imageKibe,
+      time: 30
     },
 
   ];
+
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
   return (
     <>
@@ -42,18 +57,29 @@ function Home() {
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{item.title}</h5>
               </a>
               <p className="mb-3 font-normal">{item.description}</p>
-              <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ver receita
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </a>
+              <button
+                onClick={() => setSelectedRecipe(item)}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer">Ver receita
+                <ArrowRightIcon />
+              </button>
             </div>
           </div>
         ))}
+
+        {/* Modal component */}
+        <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
+          {/* children*/}
+          {selectedRecipe && (
+            <>
+              <h2 className="text-2xl font-bold mb-4">{selectedRecipe.title}</h2>
+              <p className="mb-4">{selectedRecipe.description}</p>
+              <img className="rounded-lg w-full h-48 object-cover" src={selectedRecipe.image} alt={selectedRecipe.title} />
+              <a>Tempo aproximado: {selectedRecipe.time} minutos</a>
+            </>
+          )}
+        </Modal>
 
       </section>
     </>
   )
 }
-
-export default Home;
