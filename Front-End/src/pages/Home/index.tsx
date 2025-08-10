@@ -3,7 +3,7 @@ import imageSalada from "../../assets/img/imageSalada.png";
 import imageKibe from "../../assets/img/imageKibe.png";
 import imageBaiao from "../../assets/img/imageBaiao.png";
 import Modal from "../../components/Modal";
-import { ArrowRightIcon } from "../../assets/icons/SvgIcon";
+import { ArrowRightIcon, TimeIcon } from "../../assets/icons/SvgIcon";
 import { useState } from "react";
 
 type Recipe = {
@@ -74,7 +74,9 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-4">{selectedRecipe.title}</h2>
               <p className="mb-4">{selectedRecipe.description}</p>
               <img className="rounded-lg w-full h-48 object-cover" src={selectedRecipe.image} alt={selectedRecipe.title} />
-              <a>Tempo aproximado: {selectedRecipe.time} minutos</a>
+              <a className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
+                <TimeIcon />
+                Tempo aproximado: {selectedRecipe.time} minutos</a>
             </>
           )}
         </Modal>
