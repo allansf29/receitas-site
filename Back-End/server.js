@@ -7,74 +7,59 @@ const app = express()
 app.use(express.json())
 
 
-//criar
-app.post('/usuarios', async (req, res) => {
-
-    await prisma.user.create({
+app.post('/recipes', async (req, res) => {
+    await prisma.recipe.create({
         data: {
-            name: req.body.name,
-            age: req.body.age,
-            email: req.body.email
+            title: req.body.title,
+            description: req.body.description,
+            image: req.body.image,
+            time: req.body.time
         }
     })
-
     res.status(201).json(req.body)
 })
 
-//atualizar
-app.put('/usuarios/:id', async (req, res) => {
-    await prisma.user.update({
+// Atualizar receita
+app.put('/recipes/:id', async (req, res) => {
+    await prisma.recipe.update({
         where: {
             id: req.params.id
         },
         data: {
-            name: req.body.name,
-            age: req.body.age,
-            email: req.body.email
+            title: req.body.title,
+            description: req.body.description,
+            image: req.body.image,
+            time: req.body.time
         }
     })
-    console.log(req)
-
-    res.status(200).json("Usuário editado com sucesso")
+    res.status(200).json("Receita editada com sucesso")
 })
 
-//listar todos usuarios
-app.get('/usuarios', async (req, res) => {
-
-    let users = []
-
+// Listar receitas
+app.get('/recipes', async (req, res) => {
+    let recipes = []
     if (req.query) {
-        users = await prisma.user.findMany({
+        recipes = await prisma.recipe.findMany({
             where: {
-                name: req.query.name,
-                email: req.query.email,
-                age: req.query.age ? Number(req.query.age) : undefined,
+                title: req.query.title,
+                // outros filtros se quiser
             }
         })
     } else {
-        users = await prisma.user.findMany()
+        recipes = await prisma.recipe.findMany()
     }
-    
-    res.status(200).json(users)
-
+    res.status(200).json(recipes)
 })
 
-//deletar
-app.delete('/usuarios/:id', async (req, res) => {
-    await prisma.user.delete({
+// Deletar receita
+app.delete('/recipes/:id', async (req, res) => {
+    await prisma.recipe.delete({
         where: {
             id: req.params.id
         }
     })
-    res.status(200).json("Usuário deletado com sucesso")
+    res.status(200).json("Receita deletada com sucesso")
 })
 
 
 app.listen(3000)
-
-
-
-
-
-//allansf29
-//bOZvGK39R9cShK4U
