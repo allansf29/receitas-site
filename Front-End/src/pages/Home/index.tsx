@@ -1,10 +1,8 @@
 import Carousel from "../../components/Carousel";
-import imageSalada from "../../assets/img/imageSalada.png";
-import imageKibe from "../../assets/img/imageKibe.png";
-import imageBaiao from "../../assets/img/imageBaiao.png";
 import Modal from "../../components/Modal";
+import api from "../../services/api";
 import { ArrowRightIcon, TimeIcon } from "../../assets/icons/SvgIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Recipe = {
   id: string;
@@ -15,30 +13,18 @@ type Recipe = {
 };
 
 export default function Home() {
-  const recipes: Recipe[] = [
-    {
-      id: Math.random().toString(36).substring(2, 15),
-      title: "Baião de Dois",
-      description: "Delicious Baião de Dois recipe with a mix of rice, beans, and spices.",
-      image: imageBaiao,
-      time: 30
-    },
-    {
-      id: Math.random().toString(36).substring(2, 15),
-      title: "Yakisoba",
-      description: "Delicious Yakisoba recipe with a savory stir-fry and vegetables.",
-      image: imageSalada,
-      time: 30
-    },
-    {
-      id: Math.random().toString(36).substring(2, 15),
-      title: "Kibe de Forno",
-      description: "Delicious Kibe de Forno recipe with a crispy crust and savory filling.",
-      image: imageKibe,
-      time: 30
-    },
 
-  ];
+ const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+  async function getUsers() {
+   const recipesFromApi = await api.get('/recipes')
+
+   setRecipes(recipesFromApi.data);
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
