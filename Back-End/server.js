@@ -8,12 +8,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-
+// Criar receita
 app.post('/recipes', async (req, res) => {
     await prisma.recipe.create({
         data: {
             title: req.body.title,
             description: req.body.description,
+            ingredients: req.body.ingredients,
             image: req.body.image,
             time: req.body.time
         }
@@ -30,6 +31,7 @@ app.put('/recipes/:id', async (req, res) => {
         data: {
             title: req.body.title,
             description: req.body.description,
+            ingredients: req.body.ingredients,
             image: req.body.image,
             time: req.body.time
         }
@@ -45,6 +47,9 @@ app.get('/recipes', async (req, res) => {
             where: {
                 title: req.query.title,
                 // outros filtros se quiser
+            },
+            orderBy: {
+                order: 'asc'
             }
         })
     } else {

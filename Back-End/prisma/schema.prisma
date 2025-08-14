@@ -18,6 +18,8 @@ model Recipe {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   title   String   @unique
   description    String
+  ingredients String[]
   image     String
   time  Int
+  order Int?
 }
