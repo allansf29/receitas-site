@@ -2,7 +2,7 @@ import Logo from "../assets/img/logo.png";
 
 function Header() {
   return (
-    <header className="w-full bg-white shadow-2xl">
+    <header className="w-full #ffe7f4 shadow-2xl">
       <nav className="flex flex-col sm:flex-row items-center sm:justify-between max-w-7xl mx-auto h-auto px-1 py-1 gap-2 sm:gap-0">
         {/* Logo */}
         <img className="h-20 w-20 object-cover mb-2 sm:mb-0" src={Logo} alt="Logo" />
