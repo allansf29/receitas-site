@@ -19,6 +19,7 @@ model Recipe {
   title   String   @unique
   description    String
   ingredients String[]
+  preparation String[]
   image     String
   time  Int
   order Int?
