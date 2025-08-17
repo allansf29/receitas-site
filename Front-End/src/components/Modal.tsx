@@ -10,34 +10,42 @@ type ModalProps = {
 export default function Modal({ isOpen, isClose, children }: ModalProps) {
     const [show, setShow] = useState(isOpen);
 
-    // Animação suave de entrada/saída
+    // Controla o "montar/desmontar" para permitir a animação
     useEffect(() => {
         if (isOpen) {
             setShow(true);
         } else {
-            const timeout = setTimeout(() => setShow(false), 300); // Espera animação
+            const timeout = setTimeout(() => setShow(false), 300);
             return () => clearTimeout(timeout);
         }
     }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add("modal-open");
+        } else {
+            document.body.classList.remove("modal-open");
+        }
+    }, [isOpen]);
+
 
     if (!show) return null;
 
     return (
         <div
-            className={`fixed z-[1000] inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                isOpen ? "opacity-100" : "opacity-0"
-            }`}
+            className={`fixed z-[1000] inset-0 flex items-center justify-center transition-opacity duration-300
+            ${isOpen ? "opacity-100" : "opacity-0"}`}
         >
-            {/* Fundo */}
+            {/* Fundo escuro com blur */}
             <div
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={() => isClose(false)}
             />
 
-            {/* Conteúdo do modal */}
+            {/* Container do modal */}
             <div
-                className={`relative bg-white rounded-xl shadow-2xl border-2 border-blue-500 
-                w-[90%] max-w-lg p-6 md:p-8 transition-all duration-300 transform
+                className={`relative bg-white rounded-2xl shadow-xl border border-blue-500
+                w-[90%] max-w-3xl transition-all duration-300 transform
                 ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
             >
                 {/* Botão de fechar */}
@@ -53,3 +61,4 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
         </div>
     );
 }
+
