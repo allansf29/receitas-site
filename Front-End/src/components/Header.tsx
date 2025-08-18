@@ -1,4 +1,5 @@
 import Logo from "../assets/img/logo.png";
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -8,9 +9,9 @@ function Header() {
         <img className="h-20 w-20 object-cover mb-2 sm:mb-0" src={Logo} alt="Logo" />
         {/* Menu */}
         <ul className="flex gap-4 sm:gap-6 font-bold text-base sm:text-lg mb-2 sm:mb-0">
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#receitas">Receitas</a></li>
-          <li><a href="#sobre">Sobre mim</a></li>
+          <li><Link to="/">Início</Link></li>
+          <li><Link to="/receitas">Receitas</Link></li>
+          <li><Link to="/sobre">Sobre mim</Link></li>
         </ul>
         {/* Campo de pesquisa */}
         <input

@@ -61,29 +61,31 @@ export default function Home() {
             <>
               <div className="p-6 overflow-y-auto max-h-[80vh]">
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">{selectedRecipe.title}</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-center">{selectedRecipe.title}</h2>
                   <p className="mb-4">{selectedRecipe.description}</p>
                   <img className="rounded-lg w-full h-48 object-cover" src={selectedRecipe.image} alt={selectedRecipe.title} />
+                  <a className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
+                    <TimeIcon />
+                    Tempo aproximado: {selectedRecipe.time} minutos
+                  </a>
                   <p className="font-bold text-2xl mt-4">Lista de ingredientes</p>
                   <ul className="list-disc pl-5 mt-2">
                     {selectedRecipe.ingredients.map((item, index) => (
                       <li key={index} className="text-gray-700">{item}</li>
                     ))}
                   </ul>
-                  <a className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
-                    <TimeIcon />
-                    Tempo aproximado: {selectedRecipe.time} minutos</a>
-                  <button
-                    onClick={() => setSelectedRecipe(null)}
-                    className="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 cursor-pointer">Fechar
-                  </button>
+
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl mt-4">Instruções</h3>
+                  <h3 className="font-bold text-xl mt-4">Modo de Preparo</h3>
                   {selectedRecipe.preparation.map((item, index) => {
-                    return <p key={index} className="mt-2">{item}</p>;
+                    return <p key={index} className="mt-2 pl-5 text-gray-700">{item}</p>;
                   })}
                 </div>
+                <button
+                  onClick={() => setSelectedRecipe(null)}
+                  className="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 cursor-pointer">Fechar
+                </button>
               </div>
             </>
           )}
