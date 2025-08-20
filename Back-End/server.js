@@ -16,6 +16,7 @@ app.post('/recipes', async (req, res) => {
             description: req.body.description,
             ingredients: req.body.ingredients,
             preparation: req.body.preparation,
+            category: req.body.category,
             image: req.body.image,
             time: req.body.time
         }
@@ -34,6 +35,7 @@ app.put('/recipes/:id', async (req, res) => {
             description: req.body.description,
             ingredients: req.body.ingredients,
             preparation: req.body.preparation,
+            category: req.body.category,
             image: req.body.image,
             time: req.body.time
         }

@@ -14,13 +14,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Category {
+  PRATO_PRINCIPAL
+  SALGADO
+  SOBREMESA
+  DOCE
+  BEBIDAS
+}
+
+
 model Recipe {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  title   String   @unique
-  description    String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String   @unique
+  description String
   ingredients String[]
   preparation String[]
-  image     String
-  time  Int
-  order Int?
+  category    Category?
+  image       String
+  time        Int
+  order       Int?
 }
