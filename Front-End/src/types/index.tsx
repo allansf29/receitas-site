@@ -6,4 +6,5 @@ export type Recipe = {
   preparation: string[];
   image: string;
   time: number;
+  category?: string; // <-- ADICIONE ISSO
 };
