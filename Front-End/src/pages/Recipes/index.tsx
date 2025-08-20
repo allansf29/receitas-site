@@ -110,12 +110,14 @@ export default function Receitas() {
               ))}
             </ul>
             <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
-            {selectedRecipe.preparation.map((step, index) => (
-              <p key={index} className="mt-2">{step}</p>
-            ))}
+            <ul className="list-disc pl-5 mt-2">
+              {selectedRecipe.preparation.map((item, index) => (
+                <li key={index} className=" text-gray-700 ">{item}</li>
+              ))}
+            </ul>
             <button
               onClick={() => setSelectedRecipe(null)}
-              className="mt-4 px-3 py-2 bg-red-500 text-white rounded-lg cursor-pointer"
+              className="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 cursor-pointer"
             >
               Fechar
             </button>

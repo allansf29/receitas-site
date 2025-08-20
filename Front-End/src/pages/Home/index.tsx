@@ -34,8 +34,8 @@ export default function Home() {
               key={item.id}
               recipe={item}
               onSelect={(recipe) => setSelectedRecipe(recipe)}
-          />
-        ))}
+            />
+          ))}
 
         {/* Modal component */}
         <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
@@ -51,24 +51,20 @@ export default function Home() {
                 alt={selectedRecipe.title}
               />
               <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
-                <TimeIcon />Tempo aproximado: {selectedRecipe.time} minutos
-              </p>
-              <p className="font-bold text-2xl mt-4">Lista de ingredientes</p>
+                <TimeIcon />
+                Tempo aproximado: {selectedRecipe.time} min</p>
+              <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
               <ul className="list-disc pl-5 mt-2">
                 {selectedRecipe.ingredients.map((item, index) => (
-                  <li key={index} className="text-gray-700">
-                    {item}
-                  </li>
+                  <li key={index} className="text-gray-700">{item}</li>
                 ))}
               </ul>
-
-              <h3 className="font-bold text-xl mt-4">Modo de Preparo</h3>
-              {selectedRecipe.preparation.map((item, index) => (
-                <p key={index} className="mt-2 pl-5 text-gray-700">
-                  {item}
-                </p>
-              ))}
-
+              <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
+              <ul className="list-disc pl-5 mt-2">
+                {selectedRecipe.preparation.map((item, index) => (
+                  <li key={index} className=" text-gray-700 ">{item}</li>
+                ))}
+              </ul>
               <button
                 onClick={() => setSelectedRecipe(null)}
                 className="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 cursor-pointer"
