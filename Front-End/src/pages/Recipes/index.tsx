@@ -55,10 +55,11 @@ export default function Receitas() {
           className="p-2 border rounded-lg shadow-sm"
         >
           <option value="all">Todas</option>
-          <option value="bolo">Bolos</option>
-          <option value="pão">Pães</option>
-          <option value="sobremesa">Sobremesas</option>
-          <option value="bebida">Bebidas</option>
+          <option value="PRATO_PRINCIPAL">Prato Principal</option>
+          <option value="SALGADO">Salgado</option>
+          <option value="SOBREMESA">Sobremesas</option>
+          <option value="BEBIDA">Bebidas</option>
+          <option value="DOCE">Doces</option>
         </select>
 
         {/* filtro tempo */}
@@ -76,7 +77,8 @@ export default function Receitas() {
 
       {/* Lista filtrada */}
       <div className="flex flex-wrap gap-5 justify-center">
-        {filteredRecipes.map((item) => (
+        {filteredRecipes
+        .map((item) => (
           <RecipeCard
             key={item.id}
             recipe={item}
@@ -89,29 +91,31 @@ export default function Receitas() {
       <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
         {selectedRecipe && (
           <div className="p-6 overflow-y-auto max-h-[80vh]">
-            <h2 className="text-2xl font-bold mb-4 text-center">{selectedRecipe.title}</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              {selectedRecipe.title}
+            </h2>
             <p className="mb-4">{selectedRecipe.description}</p>
             <img
               className="rounded-lg w-full h-48 object-cover"
               src={selectedRecipe.image}
               alt={selectedRecipe.title}
             />
-            <p className="mt-4 font-medium">
+            <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
                 <TimeIcon />
                 Tempo aproximado: {selectedRecipe.time} min</p>
             <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
             <ul className="list-disc pl-5 mt-2">
-              {selectedRecipe.ingredients.map((ing, idx) => (
-                <li key={idx}>{ing}</li>
+              {selectedRecipe.ingredients.map((item, index) => (
+                <li key={index} className="text-gray-700">{item}</li>
               ))}
             </ul>
             <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
-            {selectedRecipe.preparation.map((step, idx) => (
-              <p key={idx} className="mt-2">{step}</p>
+            {selectedRecipe.preparation.map((step, index) => (
+              <p key={index} className="mt-2">{step}</p>
             ))}
             <button
               onClick={() => setSelectedRecipe(null)}
-              className="mt-4 px-3 py-2 bg-red-500 text-white rounded-lg"
+              className="mt-4 px-3 py-2 bg-red-500 text-white rounded-lg cursor-pointer"
             >
               Fechar
             </button>

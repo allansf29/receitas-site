@@ -27,11 +27,13 @@ export default function Home() {
           Receitas em destaque
         </h2>
 
-        {recipes.map((item) => (
-          <RecipeCard
-            key={item.id}
-            recipe={item}
-            onSelect={(recipe) => setSelectedRecipe(recipe)}
+        {recipes
+          .filter((item) => [1, 2, 3].includes(item.order))
+          .map((item) => (
+            <RecipeCard
+              key={item.id}
+              recipe={item}
+              onSelect={(recipe) => setSelectedRecipe(recipe)}
           />
         ))}
 
@@ -48,10 +50,9 @@ export default function Home() {
                 src={selectedRecipe.image}
                 alt={selectedRecipe.title}
               />
-              <a className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
-                <TimeIcon />
-                Tempo aproximado: {selectedRecipe.time} minutos
-              </a>
+              <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
+                <TimeIcon />Tempo aproximado: {selectedRecipe.time} minutos
+              </p>
               <p className="font-bold text-2xl mt-4">Lista de ingredientes</p>
               <ul className="list-disc pl-5 mt-2">
                 {selectedRecipe.ingredients.map((item, index) => (
