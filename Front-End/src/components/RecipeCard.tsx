@@ -9,7 +9,7 @@ type RecipeCardProps = {
 
 export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
     return (
-        <div className="max-w-sm bg-gray-100 border border-gray-200 rounded-lg shadow-sm dark:bg-gray-900 dark:text-amber-50">
+        <div className="max-w-sm bg-gray-100 border border-gray-200 rounded-lg shadow-sm dark:bg-gray-900 dark:text-amber-50 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 ease-in-out">
             <a>
                 <img className="rounded-t-lg w-full h-48 object-cover" src={recipe.image} alt={recipe.title} />
             </a>

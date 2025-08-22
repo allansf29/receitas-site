@@ -1,5 +1,6 @@
 import Logo from "../assets/img/logo.png";
 import { Link } from 'react-router-dom';
+import ThemeToggle from "./SliderToggle";
 
 function Header() {
   return (
@@ -19,6 +20,9 @@ function Header() {
           className="w-full sm:w-64 rounded-full bg-gray-100 px-4 py-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:focus:ring-gray-500"
           placeholder="Pesquisar receita..."
         />
+        <div className="hidden md:flex">
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );
