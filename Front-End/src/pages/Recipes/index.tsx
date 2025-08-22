@@ -35,7 +35,7 @@ export default function Receitas() {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-4">
-      <h2 className="text-3xl font-bold text-center mb-6">Todas as Receitas</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 dark:text-amber-50">Todas as Receitas</h2>
 
       {/* Filtros */}
       <div className="flex flex-wrap gap-4 items-center justify-center mb-6">
@@ -45,14 +45,14 @@ export default function Receitas() {
           placeholder="Buscar por nome..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border rounded-lg shadow-sm"
+          className="p-2 border rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100"
         />
 
         {/* filtro categoria */}
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="p-2 border rounded-lg shadow-sm"
+          className="p-2 border rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300"
         >
           <option value="all">Todas</option>
           <option value="PRATO_PRINCIPAL">Prato Principal</option>
@@ -66,7 +66,7 @@ export default function Receitas() {
         <select
           value={maxTime ?? ""}
           onChange={(e) => setMaxTime(e.target.value ? parseInt(e.target.value) : null)}
-          className="p-2 border rounded-lg shadow-sm"
+          className="p-2 border rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300"
         >
           <option value="">Sem limite de tempo</option>
           <option value="15">Até 15 min</option>
@@ -90,7 +90,7 @@ export default function Receitas() {
       {/* Modal */}
       <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
         {selectedRecipe && (
-          <div className="p-6 overflow-y-auto max-h-[80vh]">
+          <div className="p-6 overflow-y-auto max-h-[80vh] ">
             <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedRecipe.title}
             </h2>
@@ -100,9 +100,9 @@ export default function Receitas() {
               src={selectedRecipe.image}
               alt={selectedRecipe.title}
             />
-            <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium">
+            <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium dark:text-gray-300">
                 <TimeIcon />
-                Tempo aproximado: {selectedRecipe.time} min</p>
+                Tempo aproximado: {selectedRecipe.time} minutos</p>
             <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
             <ul className="list-disc pl-5 mt-2">
               {selectedRecipe.ingredients.map((item, index) => (

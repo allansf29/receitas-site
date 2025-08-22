@@ -3,12 +3,14 @@
 @import 'swiper/css';
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
-
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
 
 body {
   font-family: 'Inter', sans-serif;
   /* background-color: #fcf7dd; */
-  background-color: #ffe7f4;
+  /* background-color: #ffe7f4; */
+  @apply bg-pink-100 dark:bg-gray-800;
 }
 
 body.modal-open {

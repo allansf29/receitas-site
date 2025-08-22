@@ -9,16 +9,16 @@ type RecipeCardProps = {
 
 export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
     return (
-        <div className="max-w-sm bg-gray-100 border border-gray-200 rounded-lg shadow-sm ">
+        <div className="max-w-sm bg-gray-100 border border-gray-200 rounded-lg shadow-sm dark:bg-gray-900 dark:text-amber-50">
             <a>
                 <img className="rounded-t-lg w-full h-48 object-cover" src={recipe.image} alt={recipe.title} />
             </a>
             <div className="p-5">
                 <a>
-                    <h5 className="mb-3 text-2xl font-bold tracking-tight text-gray-900">{recipe.title}</h5>
+                    <h5 className="mb-3 text-2xl font-bold tracking-tight light:text-gray-900">{recipe.title}</h5>
                 </a>
                 <p className="mb-3 font-normal">{recipe.description}</p>
-                <p className="flex items-center gap-1 text-gray-700 font-medium mb-3">
+                <p className="flex items-center gap-1 text-gray-600 dark:text-gray-400 font-medium mb-3">
                     <TimeIcon />
                     Tempo aproximado: {recipe.time} min</p>
                 <button

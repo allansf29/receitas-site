@@ -38,14 +38,14 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
         >
             {/* Fundo escuro com blur */}
             <div
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/50 dark:bg-black/65 backdrop-blur-sm"
                 onClick={() => isClose(false)}
             />
 
             {/* Container do modal */}
             <div
                 className={`relative bg-white rounded-2xl shadow-xl border border-blue-500
-                w-[90%] max-w-3xl transition-all duration-300 transform
+                w-[90%] max-w-3xl transition-all duration-300 transform dark:bg-gray-800 dark:border-gray-700 text-black dark:text-amber-50
                 ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
             >
                 {/* Botão de fechar */}
