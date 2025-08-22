@@ -19,7 +19,7 @@ enum Category {
   SALGADO
   SOBREMESA
   DOCE
-  BEBIDAS
+  BEBIDA
 }
 
 
