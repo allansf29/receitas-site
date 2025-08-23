@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Carousel />
-      <section className="max-w-7xl mx-auto h-auto px-6 py-4 flex flex-wrap gap-5 dark:bg-gray-800 transition-colors duration-500">
+      <section className="max-w-7xl mx-auto h-auto px-6 py-4 flex flex-wrap gap-5">
         <h2 className="w-full text-3xl font-bold text-center dark:text-amber-50">
           Receitas em destaque
         </h2>
@@ -50,7 +50,7 @@ export default function Home() {
                 src={selectedRecipe.image}
                 alt={selectedRecipe.title}
               />
-              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400 font-medium">
+              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
                 <TimeIcon />
                 Tempo aproximado: {selectedRecipe.time} minutos</p>
               <h3 className="font-bold text-xl mt-4">Ingredientes</h3>

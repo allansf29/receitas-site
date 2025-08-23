@@ -11,6 +11,7 @@ body {
   /* background-color: #fcf7dd; */
   /* background-color: #ffe7f4; */
   @apply bg-pink-100 dark:bg-gray-800;
+  transition: background-color 0.5s ease;
 }
 
 body.modal-open {

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 type ToggleOptionsType = "light" | "dark";
@@ -17,32 +17,30 @@ const ThemeToggle = () => {
   }, [selected]);
 
   return (
-    <div className="relative flex items-center rounded-full border border-gray-300 dark:border-gray-700">
+    <div className="relative flex items-center rounded-full border border-gray-300 dark:border-gray-700 transition-colors duration-500">
       {/* Light */}
       <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "light" ? "text-white" : "text-gray-700 dark:text-gray-300"
-        }`}
+        className={`${TOGGLE_CLASSES} ${selected === "light" ? "text-white" : "text-gray-700 dark:text-gray-300"
+          }`}
         onClick={() => setSelected("light")}
-      >
-        <FiMoon className="text-lg" />
-      </button>
-
-      {/* Dark */}
-      <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "dark" ? "text-white" : "text-gray-700 dark:text-gray-300"
-        }`}
-        onClick={() => setSelected("dark")}
       >
         <FiSun className="text-lg" />
       </button>
 
+      {/* Dark */}
+      <button
+        className={`${TOGGLE_CLASSES} ${selected === "dark" ? "text-white" : "text-gray-700 dark:text-gray-300"
+          }`}
+        onClick={() => setSelected("dark")}
+      >
+
+        <FiMoon className="text-lg" />
+      </button>
+
       {/* Background animado */}
       <div
-        className={`absolute inset-0 z-0 flex ${
-          selected === "dark" ? "justify-end" : "justify-start"
-        }`}
+        className={`absolute inset-0 z-0 flex ${selected === "dark" ? "justify-end" : "justify-start"
+          }`}
       >
         <motion.span
           layout

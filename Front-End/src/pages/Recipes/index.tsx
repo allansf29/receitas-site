@@ -100,19 +100,19 @@ export default function Receitas() {
               src={selectedRecipe.image}
               alt={selectedRecipe.title}
             />
-            <p className="mt-4 flex items-center gap-1 text-gray-700 font-medium dark:text-gray-300">
+            <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
                 <TimeIcon />
                 Tempo aproximado: {selectedRecipe.time} minutos</p>
             <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
             <ul className="list-disc pl-5 mt-2">
               {selectedRecipe.ingredients.map((item, index) => (
-                <li key={index} className="text-gray-700">{item}</li>
+                <li key={index} className="text-gray-700 dark:text-gray-200">{item}</li>
               ))}
             </ul>
             <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
             <ul className="list-disc pl-5 mt-2">
               {selectedRecipe.preparation.map((item, index) => (
-                <li key={index} className=" text-gray-700 ">{item}</li>
+                <li key={index} className=" text-gray-700 dark:text-gray-200">{item}</li>
               ))}
             </ul>
             <button
