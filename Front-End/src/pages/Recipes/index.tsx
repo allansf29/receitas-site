@@ -4,6 +4,7 @@ import RecipeCard from "../../components/RecipeCard";
 import Modal from "../../components/Modal";
 import type { Recipe } from "../../types/index";
 import { TimeIcon } from "../../assets/icons/SvgIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Receitas() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -77,15 +78,21 @@ export default function Receitas() {
 
       {/* Lista filtrada */}
       <div className="flex flex-wrap gap-5 justify-center">
-        {filteredRecipes
-        .map((item) => (
-          <RecipeCard
-            key={item.id}
-            recipe={item}
-            onSelect={setSelectedRecipe}
-          />
-        ))}
+        <AnimatePresence>
+          {filteredRecipes.map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <RecipeCard recipe={item} onSelect={setSelectedRecipe} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
+
 
       {/* Modal */}
       <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
