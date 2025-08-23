@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 type ToggleOptionsType = "light" | "dark";
@@ -9,6 +9,12 @@ const TOGGLE_CLASSES =
 
 const ThemeToggle = () => {
   const [selected, setSelected] = useState<ToggleOptionsType>("light");
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(selected);
+  }, [selected]);
 
   return (
     <div className="relative flex items-center rounded-full border border-gray-300 dark:border-gray-700">
