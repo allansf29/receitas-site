@@ -1,6 +1,7 @@
 import { ArrowRightIcon } from "../assets/icons/SvgIcon";
 import type { Recipe } from "../types/index";
 import { TimeIcon } from "../assets/icons/SvgIcon";
+import { DrawOutlineButton } from "../components/Button";
 
 type RecipeCardProps = {
     recipe: Recipe;
@@ -21,11 +22,10 @@ export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
                 <p className="flex items-center gap-1 text-gray-600 dark:text-gray-400 font-medium mb-3">
                     <TimeIcon />
                     Tempo aproximado: {recipe.time} min</p>
-                <button
-                    onClick={() => onSelect(recipe)}
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-pink-500 rounded-lg hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 cursor-pointer">Ver receita
-                    <ArrowRightIcon />
-                </button>
+                <DrawOutlineButton
+                    onClick={() => onSelect(recipe)}>
+                    Ver receita
+                </DrawOutlineButton>
             </div>
         </div>
     );
