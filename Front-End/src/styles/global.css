@@ -1,19 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 @import "tailwindcss";
+
 @import 'swiper/css';
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
+
+@theme {
+  --color-background: #F3EDE4;
+  --color-primary: #6F4E37;
+  --color-secondary: #A0522D;
+  --color-detail: #D2691E;
+  --color-text: #2B1B12;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(.light, .light *));
 
-body {
-  font-family: 'Inter', sans-serif;
-  /* background-color: #fcf7dd; */
-  /* background-color: #ffe7f4; */
-  @apply bg-pink-100 dark:bg-gray-800;
-  transition: background-color 0.5s ease;
-}
+@layer base {
+  body {
+    @apply bg-background dark:bg-gray-800 transition-colors duration-500;
+    font-family: 'Inter', sans-serif;
+  }
 
-body.modal-open {
-  overflow: hidden;
+  body.modal-open {
+    overflow: hidden;
+  }
 }

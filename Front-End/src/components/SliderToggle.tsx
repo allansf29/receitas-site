@@ -8,7 +8,7 @@ const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 py-1.5 transition-colors relative z-10";
 
 const ThemeToggle = () => {
-  const [selected, setSelected] = useState<ToggleOptionsType>("light");
+  const [selected, setSelected] = useState<ToggleOptionsType>("dark");
 
   useEffect(() => {
     const root = window.document.documentElement;

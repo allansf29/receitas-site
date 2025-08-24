@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './styles/global.css'
+import "./styles/global.css"
 import Home from './pages/Home'
 import Header from './components/Header'
 import RecipeList from './pages/Recipes'
