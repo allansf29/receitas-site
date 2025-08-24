@@ -10,7 +10,7 @@ type RecipeCardProps = {
 export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
     return (
         <div className="max-w-sm 
-            bg-background border-2 border-secondary rounded-lg shadow-sm 
+            bg-background border- border-secondary rounded-lg shadow-sm 
             dark:bg-gray-900 dark:text-amber-50 dark:border-gray-700 
             hover:shadow-lg transition-shadow duration-300 ease-in-out"
         >

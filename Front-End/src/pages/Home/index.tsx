@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <Carousel />
       <section className="max-w-7xl mx-auto h-auto px-6 py-4 flex flex-wrap gap-5">
-        <h2 className="w-full text-3xl font-bold text-center text-text dark:text-amber-50">
+        <h2 className="w-full text-3xl font-bold text-center text-text dark:text-amber-50 font-title">
           Receitas em destaque
         </h2>
 
