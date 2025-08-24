@@ -6,7 +6,9 @@ const prisma = new PrismaClient()
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:5173', 'http://192.168.1.108:5173'],
+}))
 
 // Criar receita
 app.post('/recipes', async (req, res) => {
@@ -73,4 +75,4 @@ app.delete('/recipes/:id', async (req, res) => {
 })
 
 
-app.listen(3000)
+app.listen(3000, '0.0.0.0')
