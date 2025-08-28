@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
 
         {/* Menu Principal (Desktop) */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-lg hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
+          <Link to="/" className="text-lg text-text dark:text-white hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
            🏠︎ Home
           </Link>
 
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link to="/receitas" className="flex items-center text-lg hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
+            <Link to="/receitas" className="flex items-center text-lg dark:text-white text-text hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
              🕮 Receitas <span className="ml-1 text-xs">▼</span>
             </Link>
 
@@ -125,7 +125,7 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-          <Link to="/sobre" className="text-lg hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
+          <Link to="/sobre" className="text-lg hover:text-secondary text-text dark:text-white dark:hover:text-gray-400 transition-colors duration-200">
             🔍︎ Sobre
           </Link>
         </div>
