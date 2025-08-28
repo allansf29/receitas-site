@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="bg-background shadow-lg sticky top-0 z-50 font-sans dark:bg-gray-900 dark:text-gray-200">
-      <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-6 py-4 flex items-center justify-between relative">
         <a className="flex items-center space-x-2 font-logo">
           <img src={Logo} alt="Logo Casinha da Ana" className="h-10 w-10 rounded-full" />
           <span className="text-2xl font-bold text-primary dark:text-white tracking-wide">
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
         </a>
 
         {/* Menu Principal (Desktop) */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
           <Link to="/" className="text-lg text-text dark:text-white hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
            🏠︎ Home
           </Link>

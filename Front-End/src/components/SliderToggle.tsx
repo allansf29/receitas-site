@@ -10,18 +10,34 @@ const TOGGLE_CLASSES =
 const ThemeToggle = () => {
   const [selected, setSelected] = useState<ToggleOptionsType>("light");
 
+  // Carrega o tema salvo no localStorage
   useEffect(() => {
-    const root = window.document.documentElement;
+    const savedTheme = localStorage.getItem("theme") as ToggleOptionsType | null;
+    if (savedTheme) {
+      setSelected(savedTheme);
+      document.documentElement.classList.add(savedTheme);
+    }
+  }, []);
+
+  // Atualiza o tema quando `selected` mudar
+  useEffect(() => {
+    const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(selected);
+
+    // Salva no localStorage
+    localStorage.setItem("theme", selected);
   }, [selected]);
 
   return (
     <div className="relative flex items-center rounded-full border-1 border-primary dark:border-gray-700 transition-colors duration-500">
       {/* Light */}
       <button
-        className={`${TOGGLE_CLASSES} ${selected === "light" ? "text-white" : "text-gray-700 dark:text-gray-300 cursor-pointer"
-          }`}
+        className={`${TOGGLE_CLASSES} ${
+          selected === "light"
+            ? "text-white"
+            : "text-gray-700 dark:text-gray-300 cursor-pointer"
+        }`}
         onClick={() => setSelected("light")}
       >
         <FiSun className="text-lg" />
@@ -29,18 +45,21 @@ const ThemeToggle = () => {
 
       {/* Dark */}
       <button
-        className={`${TOGGLE_CLASSES} ${selected === "dark" ? "text-white" : "text-gray-700 dark:text-gray-300 cursor-pointer"
-          }`}
+        className={`${TOGGLE_CLASSES} ${
+          selected === "dark"
+            ? "text-white"
+            : "text-gray-700 dark:text-gray-300 cursor-pointer"
+        }`}
         onClick={() => setSelected("dark")}
       >
-
         <FiMoon className="text-lg" />
       </button>
 
       {/* Background animado */}
       <div
-        className={`absolute inset-0 z-0 flex ${selected === "dark" ? "justify-end" : "justify-start"
-          }`}
+        className={`absolute inset-0 z-0 flex ${
+          selected === "dark" ? "justify-end" : "justify-start"
+        }`}
       >
         <motion.span
           layout
