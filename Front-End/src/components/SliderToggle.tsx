@@ -17,7 +17,7 @@ const ThemeToggle = () => {
   }, [selected]);
 
   return (
-    <div className="relative flex items-center rounded-full border border-gray-300 dark:border-gray-700 transition-colors duration-500">
+    <div className="relative flex items-center rounded-full border-1 border-primary dark:border-gray-700 transition-colors duration-500">
       {/* Light */}
       <button
         className={`${TOGGLE_CLASSES} ${selected === "light" ? "text-white" : "text-gray-700 dark:text-gray-300 cursor-pointer"
