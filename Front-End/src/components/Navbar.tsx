@@ -129,7 +129,7 @@ const Navbar: React.FC = () => {
             🔍︎ Sobre
           </Link>
         </div>
-        <div className="hidden md:block">
+        <div className="transform scale-70 md:scale-100">
           <ThemeToggle />
         </div>
 
@@ -223,9 +223,9 @@ const Navbar: React.FC = () => {
               </div>
             </div>
             <div className="border-t border-primary dark:border-gray-700 my-2"></div>
-            <div className="px-42 mb-2">
+            {/* <div className="px-42 mb-2">
               <ThemeToggle />
-            </div>
+            </div> */}
           </motion.div>
         </motion.div>
       )}

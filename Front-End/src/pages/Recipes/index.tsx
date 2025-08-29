@@ -120,7 +120,7 @@ export default function Receitas() {
             <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedRecipe.title}
             </h2>
-            <p className="mb-4">{selectedRecipe.description}</p>
+            <p className="mb-4 font-bold">{selectedRecipe.description}</p>
             <img
               className="rounded-lg w-full h-48 object-cover"
               src={selectedRecipe.image}
@@ -135,7 +135,7 @@ export default function Receitas() {
               {selectedRecipe.ingredients.map((item, index) => (
                 <li
                   key={index}
-                  className="text-gray-700 dark:text-gray-200"
+                  className="text-gray-700 dark:text-gray-200 text-sm md:text-base"
                 >
                   {item}
                 </li>
@@ -146,7 +146,7 @@ export default function Receitas() {
               {selectedRecipe.preparation.map((item, index) => (
                 <li
                   key={index}
-                  className=" text-gray-700 dark:text-gray-200"
+                  className=" text-gray-700 dark:text-gray-200 text-sm md:text-base2"
                 >
                   {item}
                 </li>
