@@ -40,3 +40,17 @@
   font-weight: 400;
 }
 }
+
+.swiper-pagination-bullet-active {
+    background: #A0522D !important; /* Exemplo: muda para vermelho. Use a cor que preferir. */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #ffffff !important; /* Exemplo: muda a cor das setas para branco */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: #cccccc !important; /* Exemplo: muda a cor para um cinza claro no hover */
+}
