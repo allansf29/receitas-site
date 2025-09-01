@@ -62,7 +62,7 @@
 
 ::-webkit-scrollbar-track {
   background: #F3EDE4; /* Cor de fundo da trilha da barra de rolagem */
-  border-radius: 0px 20px 0px 0px; /* Borda arredondada da trilha */
+  border-radius: 0px 20px 20px 0px; /* Borda arredondada da trilha */
 }
 
 ::-webkit-scrollbar-thumb {

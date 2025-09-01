@@ -5,6 +5,7 @@ import { TimeIcon } from "../../assets/icons/SvgIcon";
 import { useState, useEffect } from "react";
 import RecipeCard from "../../components/RecipeCard";
 import type { Recipe } from "../../types/index";
+import { motion } from "framer-motion"
 
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -23,9 +24,13 @@ export default function Home() {
     <>
       <Carousel />
       <section className="max-w-7xl mx-auto h-auto px-6 py-4 flex flex-wrap gap-5 justify-center">
-        <h2 className="w-full text-3xl font-bold text-center text-text dark:text-amber-50 font-title">
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="w-full text-3xl font-bold text-center text-text dark:text-amber-50 font-title">
           Receitas em destaque
-        </h2>
+        </motion.h2>
 
         {recipes
           .filter((item) => [1, 2, 3].includes(item.order))

@@ -11,7 +11,7 @@ export const DrawOutlineButton = ({
   return (
     <button
       {...rest}
-      className={`group relative px-4 py-2 font-medium text-slate-100 transition-colors duration-[400ms] hover:text-text ${className} bg-black rounded-sm dark:bg-amber-50 dark:text-black dark:hover:text-orange-600`}
+      className={`group relative px-4 py-2 font-medium text-slate-100 transition-colors duration-[400ms] hover:text-text ${className} bg-black rounded-sm dark:bg-amber-50 dark:text-black dark:hover:text-orange-600 cursor-pointer`}
     >
       <span>{children}</span>
 

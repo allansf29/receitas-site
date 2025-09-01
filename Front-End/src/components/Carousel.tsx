@@ -4,6 +4,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import img1 from '../assets/img/image1.jpg';
 import img2 from '../assets/img/image2.jpg';
 import img3 from '../assets/img/image3.jpg';
+import { motion } from "framer-motion"
 
 export default function Carousel() {
   return (

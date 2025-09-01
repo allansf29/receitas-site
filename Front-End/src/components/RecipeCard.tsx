@@ -1,6 +1,7 @@
 import type { Recipe } from "../types/index";
 import { TimeIcon } from "../assets/icons/SvgIcon";
 import { DrawOutlineButton } from "../components/Button";
+import { motion } from "framer-motion";
 
 type RecipeCardProps = {
     recipe: Recipe;
@@ -9,10 +10,14 @@ type RecipeCardProps = {
 
 export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
     return (
-        <div className="max-w-sm 
+        <motion.div
+            className="max-w-sm 
             bg-background border- border-secondary rounded-lg shadow-sm 
             dark:bg-gray-900 dark:text-amber-50 dark:border-gray-700 
             hover:shadow-lg transition-shadow duration-300 ease-in-out"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
         >
             <a>
                 <img className="rounded-t-lg w-full h-48 object-cover" src={recipe.image} alt={recipe.title} />
@@ -34,7 +39,7 @@ export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
                     Ver receita
                 </DrawOutlineButton>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
