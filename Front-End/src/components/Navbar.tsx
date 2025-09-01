@@ -172,8 +172,8 @@ const Navbar: React.FC = () => {
             <Link to="/receitas" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
               Receitas
             </Link>
-            <Link to="/contato" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
-              Contato
+            <Link to="/sobre" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
+              Sobre
             </Link>
             <div className="border-t border-primary dark:border-gray-700 my-2"></div>
 

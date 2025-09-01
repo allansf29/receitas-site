@@ -33,7 +33,7 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
 
     return (
  <div
-            className={`fixed z-[1000] inset-0 flex items-center justify-center transition-opacity duration-300
+            className={`fixed z-[1000] inset-0 flex items-center justify-center transition-opacity duration-300 
             ${isOpen ? "opacity-100" : "opacity-0"}`}
         >
             {/* Fundo escuro com blur */}

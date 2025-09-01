@@ -54,3 +54,24 @@
 .swiper-button-next:hover {
     color: #cccccc !important; /* Exemplo: muda a cor para um cinza claro no hover */
 }
+
+/* Para navegadores baseados em WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EDE4; /* Cor de fundo da trilha da barra de rolagem */
+  border-radius: 0px 20px 0px 0px; /* Borda arredondada da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2B1B12; /* Cor do "polegar" (a parte que você move) */
+  border-radius: 20px; /* Borda arredondada do polegar */
+  border: 3px solid #F3EDE4; /* Borda em volta do polegar, para separá-lo da trilha */
+}
+
+/* Quando o mouse estiver sobre a barra */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6F4E37; /* Uma cor um pouco mais clara para o efeito de hover */
+}
