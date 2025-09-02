@@ -39,15 +39,20 @@ const Navbar: React.FC = () => {
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between relative">
         <a className="flex items-center space-x-2 font-logo">
           <img src={Logo} alt="Logo Casinha da Ana" className="h-10 w-10 rounded-full" />
-          <span className="text-2xl font-bold text-primary dark:text-white tracking-wide">
+          <motion.span
+            className="text-2xl font-bold text-primary dark:text-white tracking-wide"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 1 }}
+          >
             Casinha da Ana
-          </span>
+          </motion.span>
         </a>
 
         {/* Menu Principal (Desktop) */}
         <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
           <Link to="/" className="text-lg text-text dark:text-white hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
-           🏠︎ Home
+            🏠︎ Home
           </Link>
 
           {/* Container para o Dropdown */}
@@ -57,7 +62,7 @@ const Navbar: React.FC = () => {
             onMouseLeave={handleMouseLeave}
           >
             <Link to="/receitas" className="flex items-center text-lg dark:text-white text-text hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
-             🕮 Receitas <span className="ml-1 text-xs">▼</span>
+              🕮 Receitas <span className="ml-1 text-xs">▼</span>
             </Link>
 
             {isDropdownOpen && (

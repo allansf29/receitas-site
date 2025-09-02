@@ -57,21 +57,29 @@ export default function Receitas() {
       </h2>
 
       {/* Filtros */}
-      <div className="flex flex-wrap gap-4 items-center justify-center mb-6">
+      <div className="flex flex-col md:flex-row md:flex-wrap gap-4 items-center justify-center mb-8">
         {/* filtro nome */}
-        <input
+        <motion.input
+          whileFocus={{ scale: 1.03, boxShadow: "0 0 12px rgba(0,0,0,0.15)" }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
           type="text"
-          placeholder="Buscar por nome..."
+          placeholder="🔍︎ Buscar receita..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border rounded-lg shadow-sm border-primary outline-primary dark:outline-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100"
+          className="w-full md:w-64 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
+               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+               focus:outline-none "
         />
 
         {/* filtro categoria */}
-        <select
+        <motion.select
+          whileFocus={{ scale: 1.03, boxShadow: "0 0 12px rgba(0,0,0,0.15)" }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="p-2 border rounded-lg shadow-sm dark:bg-gray-800 border-primary outline-primary dark:border-gray-700 dark:text-gray-300"
+          className="w-full md:w-48 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
+               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300
+               focus:outline-none"
         >
           <option value="all">Todas</option>
           <option value="PRATO_PRINCIPAL">Prato Principal</option>
@@ -79,39 +87,45 @@ export default function Receitas() {
           <option value="SOBREMESA">Sobremesas</option>
           <option value="BEBIDA">Bebidas</option>
           <option value="DOCE">Doces</option>
-        </select>
+        </motion.select>
 
         {/* filtro tempo */}
-        <select
+        <motion.select
+          whileFocus={{ scale: 1.03, boxShadow: "0 0 12px rgba(0,0,0,0.15)" }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
           value={maxTime ?? ""}
           onChange={(e) =>
             setMaxTime(e.target.value ? parseInt(e.target.value) : null)
           }
-          className="p-2 border rounded-lg shadow-sm border-primary outline-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300"
+          className="w-full md:w-56 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
+               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300
+               focus:outline-none"
         >
-          <option value="">Sem limite de tempo</option>
+          <option value="">⏱️ Sem limite de tempo</option>
           <option value="15">Até 15 min</option>
           <option value="30">Até 30 min</option>
           <option value="60">Até 1 hora</option>
-        </select>
+        </motion.select>
       </div>
 
       {/* Lista filtrada */}
-      <div className="flex flex-wrap gap-5 justify-center">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
         <AnimatePresence>
           {filteredRecipes.map((item) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="w-full"
             >
               <RecipeCard recipe={item} onSelect={setSelectedRecipe} />
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
+
 
       {/* Modal */}
       <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
