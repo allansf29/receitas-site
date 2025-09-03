@@ -1,5 +1,6 @@
 import { CloseIcon } from "../assets/icons/SvgIcon";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 
 type ModalProps = {
   isOpen: boolean;
@@ -7,7 +8,20 @@ type ModalProps = {
   isClose: (isOpen: boolean) => void;
 };
 
+
+
 export default function Modal({ isOpen, isClose, children }: ModalProps) {
+    useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+  
   return (
     <AnimatePresence>
       {isOpen && (

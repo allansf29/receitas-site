@@ -61,11 +61,11 @@ export default function Home() {
               <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
               <ul className="list-disc pl-5 mt-2">
                 {selectedRecipe.ingredients.map((item, index) => (
-                  <li key={index} className="text-gray-700 dark:text-gray-200">{item}</li>
+                  <li key={index} className="text-gray-700 dark:text-gray-200 text-sm md:text-base">{item}</li>
                 ))}
               </ul>
               <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
-              <ul className="list-disc pl-5 mt-2">
+              <ul className="list-decimal pl-5 mt-2">
                 {selectedRecipe.preparation.map((item, index) => (
                   <li key={index} className=" text-gray-700 dark:text-gray-200">{item}</li>
                 ))}
