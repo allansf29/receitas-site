@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import RecipeCard from "../../components/RecipeCard";
 import type { Recipe } from "../../types/index";
 import { motion } from "framer-motion"
+import { DrawOutlineButton } from "../../components/Button";
 
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -77,8 +78,49 @@ export default function Home() {
                 Fechar
               </button>
             </div>
+
           )}
         </Modal>
+      </section>
+      <section className="max-w-7xl mx-auto h-auto px-6 py-4 flex flex-col gap-6">
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2 }}
+          className="w-full p-5 text-3xl font-bold text-center text-text dark:text-amber-50 font-title"
+        >
+          Receitas recentes
+        </motion.h2>
+
+        {recipes.slice(-3).map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col md:flex-row items-center bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border-2 border-dashed border-dark"
+          >
+            {/* Imagem da receita */}
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full md:w-1/3 h-48 object-cover"
+            />
+
+            {/* Conteúdo da receita */}
+            <div className="p-6 flex flex-col justify-between w-full md:w-2/3">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                {item.description}
+              </p>
+                <DrawOutlineButton onClick={() => setSelectedRecipe(item)} className="bg-primary text-background hover:bg-secondary px-4 py-2 w-fit">
+                    Ver receita
+                </DrawOutlineButton>
+            </div>
+          </motion.div>
+        ))}
       </section>
     </>
   );
