@@ -20,7 +20,9 @@ app.post('/recipes', async (req, res) => {
             preparation: req.body.preparation,
             category: req.body.category,
             image: req.body.image,
-            time: req.body.time
+            time: req.body.time,
+            potions: req.body.potions,
+            tag: req.body.tag
         }
     })
     res.status(201).json(req.body)
@@ -39,7 +41,9 @@ app.put('/recipes/:id', async (req, res) => {
             preparation: req.body.preparation,
             category: req.body.category,
             image: req.body.image,
-            time: req.body.time
+            time: req.body.time,
+            potions: req.body.potions,
+            tag: req.body.tag
         }
     })
     res.status(200).json("Receita editada com sucesso")
@@ -55,7 +59,7 @@ app.get('/recipes', async (req, res) => {
                 // outros filtros se quiser
             },
             orderBy: {
-                order: 'asc'
+                tag: 'asc'
             }
         })
     } else {
