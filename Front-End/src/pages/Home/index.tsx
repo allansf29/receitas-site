@@ -1,7 +1,7 @@
 import Carousel from "../../components/Carousel";
 import Modal from "../../components/Modal";
 import api from "../../services/api";
-import { TimeIcon } from "../../assets/icons/SvgIcon";
+import { TimeIcon, SaladIcon } from "../../assets/icons/SvgIcon";
 import { useState, useEffect } from "react";
 import RecipeCard from "../../components/RecipeCard";
 import type { Recipe } from "../../types/index";
@@ -34,7 +34,7 @@ export default function Home() {
         </motion.h2>
 
         {recipes
-          .filter((item) => [1, 2, 3].includes(item.order))
+          .filter((item) => item.tag && ["DESTAQUE"].includes(item.tag))
           .map((item) => (
             <RecipeCard
               key={item.id}
@@ -56,9 +56,16 @@ export default function Home() {
                 src={selectedRecipe.image}
                 alt={selectedRecipe.title}
               />
-              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
-                <TimeIcon />
-                Tempo aproximado: {selectedRecipe.time} minutos</p>
+              <div className="flex justify-between md:flex-row gap-6 mt-4">
+                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                  <TimeIcon />
+                  Tempo aproximado: {selectedRecipe.time} minutos
+                </p>
+                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                  <SaladIcon />
+                 Porções: {selectedRecipe.portions}
+                </p>
+              </div>
               <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
               <ul className="list-disc pl-5 mt-2">
                 {selectedRecipe.ingredients.map((item, index) => (
@@ -92,35 +99,37 @@ export default function Home() {
           Receitas recentes
         </motion.h2>
 
-        {recipes.slice(-3).map((item) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col md:flex-row items-center bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border-2 border-dashed border-dark"
-          >
-            {/* Imagem da receita */}
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full md:w-1/3 h-48 object-cover"
-            />
+        {recipes
+          .filter((item) => item.tag && ["RECENTE"].includes(item.tag))
+          .map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row items-center bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border-2 border-dashed border-dark"
+            >
+              {/* Imagem da receita */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full md:w-1/3 h-48 object-cover"
+              />
 
-            {/* Conteúdo da receita */}
-            <div className="p-6 flex flex-col justify-between w-full md:w-2/3">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {item.description}
-              </p>
+              {/* Conteúdo da receita */}
+              <div className="p-6 flex flex-col justify-between w-full md:w-2/3">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {item.description}
+                </p>
                 <DrawOutlineButton onClick={() => setSelectedRecipe(item)} className="bg-primary text-background hover:bg-secondary px-4 py-2 w-fit">
-                    Ver receita
+                  Ver receita
                 </DrawOutlineButton>
-            </div>
-          </motion.div>
-        ))}
+              </div>
+            </motion.div>
+          ))}
       </section>
     </>
   );

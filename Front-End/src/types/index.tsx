@@ -4,8 +4,9 @@ export type Recipe = {
   description: string;
   ingredients: string[];
   preparation: string[];
-  order: number;
   image: string;
   time: number;
+  portions?: number;
+  tag?: string;
   category?: string;
 };
