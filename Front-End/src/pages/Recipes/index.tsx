@@ -4,7 +4,7 @@ import api from "../../services/api";
 import RecipeCard from "../../components/RecipeCard";
 import Modal from "../../components/Modal";
 import type { Recipe } from "../../types/index";
-import { TimeIcon } from "../../assets/icons/SvgIcon";
+import { TimeIcon, SaladIcon } from "../../assets/icons/SvgIcon";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Receitas() {
@@ -140,10 +140,16 @@ export default function Receitas() {
               src={selectedRecipe.image}
               alt={selectedRecipe.title}
             />
-            <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
-              <TimeIcon />
-              Tempo aproximado: {selectedRecipe.time} minutos
-            </p>
+            <div className="flex justify-between md:flex-row gap-6 mt-4">
+              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                <TimeIcon />
+                Tempo aproximado: {selectedRecipe.time} minutos
+              </p>
+              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                <SaladIcon />
+                Porções: {selectedRecipe.portions}
+              </p>
+            </div>
             <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
             <ul className="list-disc pl-5 mt-2">
               {selectedRecipe.ingredients.map((item, index) => (
