@@ -7,6 +7,7 @@ import RecipeList from './pages/Recipes'
 import About from './pages/About'
 import Navbar from './components/Navbar';
 import Footer from '../src/components/Footer';
+import Admin from '../src/pages/Admin/Login';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,6 +17,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<Home />} />
         <Route path="/receitas" element={<RecipeList />} />
         <Route path="/sobre" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
+        {/* <Route path="/admin/login" element={<Login />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
