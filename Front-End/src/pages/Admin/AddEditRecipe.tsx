@@ -1,151 +1,155 @@
-import { useState } from "react";
+// src/pages/Admin/AddEditRecipe.tsx
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 
-export default function AddRecipe() {
+export default function AddEditRecipe() {
+  const { id } = useParams<{ id?: string }>();
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [preparation, setPreparation] = useState("");
+  const [ingredients, setIngredients] = useState(""); // string shown to user (comma separated)
+  const [preparation, setPreparation] = useState(""); // string shown to user (line separated)
   const [category, setCategory] = useState("PRATO_PRINCIPAL");
   const [image, setImage] = useState("");
-  const [time, setTime] = useState<number | null>(null); // Inicializado como null para exibir o placeholder
+  const [time, setTime] = useState<number | null>(null);
   const [portions, setPortions] = useState<number | null>(null);
   const [tag, setTag] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // se estiver em modo edição (id presente) busca a receita e popula campos
+    async function loadRecipe() {
+      if (!id) return;
+      setLoading(true);
+      try {
+        const res = await api.get(`/recipes/${id}`);
+        const data = res.data;
+        setTitle(data.title ?? "");
+        setDescription(data.description ?? "");
+        setIngredients(Array.isArray(data.ingredients) ? data.ingredients.join(", ") : (data.ingredients ?? ""));
+        setPreparation(Array.isArray(data.preparation) ? data.preparation.join("\n") : (data.preparation ?? ""));
+        setCategory(data.category ?? "PRATO_PRINCIPAL");
+        setImage(data.image ?? "");
+        setTime(typeof data.time === "number" ? data.time : null);
+        setPortions(typeof data.portions === "number" ? data.portions : null);
+        setTag(data.tag ?? null);
+      } catch (err) {
+        alert("Erro ao carregar a receita para edição.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadRecipe();
+  }, [id]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Você precisa entrar para continuar.");
+      navigate("/admin/login");
+      return;
+    }
+
+    // normaliza arrays
+    const ingredientsArray = ingredients
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    const preparationArray = preparation
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    const payload: any = {
+      title,
+      description,
+      ingredients: ingredientsArray,
+      preparation: preparationArray,
+      category,
+      image,
+      time: time ?? undefined,
+      portions: portions ?? undefined,
+      tag: tag ?? undefined,
+    };
+
     try {
-      const token = localStorage.getItem("token");
-      await api.post(
-        "/admin/recipes",
-        {
-          title,
-          description,  
-          ingredients: ingredients.split(","),
-          preparation: preparation.split("\n"),
-          category,
-          image,
-          time,
-          portions,
-          tag,
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      alert("Receita adicionada!");
-    } catch (err) {
-      alert("Erro ao salvar receita.");
+      if (id) {
+        // modo edição -> PUT
+        await api.put(`/admin/recipes/${id}`, payload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        alert("Receita editada com sucesso!");
+      } else {
+        // modo criação -> POST
+        await api.post("/admin/recipes", payload, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        alert("Receita adicionada!");
+      }
+      navigate("/admin/recipes");
+    } catch (err: any) {
+      console.error(err);
+      const msg = err?.response?.data?.error || "Erro ao salvar receita.";
+      alert(msg);
     }
   }
+
+  if (loading) return <div className="p-6">Carregando...</div>;
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">Adicionar Receita</h2>
-        
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+          {id ? "Editar Receita" : "Adicionar Receita"}
+        </h2>
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          {/* Título */}
+          {/* ... (mesmos inputs do seu formulário, usando os states acima) */}
           <div className="flex flex-col">
             <label htmlFor="title" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Título</label>
-            <input 
-              id="title"
-              type="text" 
-              placeholder="Ex: Torta de Limão" 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-              className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
-            />
+            <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-3 rounded" />
           </div>
 
-          {/* Descrição */}
           <div className="flex flex-col">
-            <label htmlFor="description" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Descrição</label>
-            <textarea 
-              id="description"
-              placeholder="Uma breve descrição sobre a receita..." 
-              value={description} 
-              onChange={(e) => setDescription(e.target.value)} 
-              className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 min-h-[100px]" 
-            />
+            <label htmlFor="description" className="mb-1">Descrição</label>
+            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="border p-3 rounded min-h-[100px]" />
           </div>
 
-          {/* Ingredientes */}
           <div className="flex flex-col">
-            <label htmlFor="ingredients" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Ingredientes</label>
-            <input 
-              id="ingredients"
-              type="text" 
-              placeholder="Ex: farinha, açúcar, ovos (separados por vírgula)" 
-              value={ingredients} 
-              onChange={(e) => setIngredients(e.target.value)} 
-              className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
-            />
+            <label htmlFor="ingredients" className="mb-1">Ingredientes (separados por vírgula)</label>
+            <input id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="border p-3 rounded" />
           </div>
 
-          {/* Modo de Preparo */}
           <div className="flex flex-col">
-            <label htmlFor="preparation" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Modo de Preparo</label>
-            <textarea 
-              id="preparation"
-              placeholder="1 passo por linha" 
-              value={preparation} 
-              onChange={(e) => setPreparation(e.target.value)} 
-              className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 min-h-[150px]" 
-            />
+            <label htmlFor="preparation" className="mb-1">Modo de Preparo (1 passo por linha)</label>
+            <textarea id="preparation" value={preparation} onChange={(e) => setPreparation(e.target.value)} className="border p-3 rounded min-h-[150px]" />
           </div>
 
-          {/* URL da Imagem */}
           <div className="flex flex-col">
-            <label htmlFor="image" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">URL da Imagem</label>
-            <input 
-              id="image"
-              type="text" 
-              placeholder="URL da imagem (Ex: https://...)" 
-              value={image} 
-              onChange={(e) => setImage(e.target.value)} 
-              className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
-            />
+            <label htmlFor="image" className="mb-1">URL da Imagem</label>
+            <input id="image" value={image} onChange={(e) => setImage(e.target.value)} className="border p-3 rounded" />
           </div>
 
-          {/* Tempo e Porções */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Tempo (Minutos) */}
             <div className="flex flex-col">
-              <label htmlFor="time" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Tempo (minutos)</label>
-              <input 
-                id="time"
-                type="number" 
-                placeholder="Ex: 30" 
-                value={time ?? ''} // Exibe o placeholder quando o valor é nulo
-                onChange={(e) => setTime(e.target.value ? Number(e.target.value) : null)} 
-                className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
-              />
+              <label htmlFor="time" className="mb-1">Tempo (min)</label>
+              <input id="time" type="number" value={time ?? ""} onChange={(e) => setTime(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded" />
             </div>
-
-            {/* Porções */}
             <div className="flex flex-col">
-              <label htmlFor="portions" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Porções (opcional)</label>
-              <input 
-                id="portions"
-                type="number" 
-                placeholder="Ex: 4" 
-                value={portions ?? ''} 
-                onChange={(e) => setPortions(e.target.value ? Number(e.target.value) : null)} 
-                className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
-              />
+              <label htmlFor="portions" className="mb-1">Porções</label>
+              <input id="portions" type="number" value={portions ?? ""} onChange={(e) => setPortions(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded" />
             </div>
           </div>
-          
-          {/* Categoria e Tag */}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Categoria */}
             <div className="flex flex-col">
-              <label htmlFor="category" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Categoria</label>
-              <select 
-                id="category"
-                value={category} 
-                onChange={(e) => setCategory(e.target.value)} 
-                className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
+              <label htmlFor="category" className="mb-1">Categoria</label>
+              <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="border p-3 rounded">
                 <option value="PRATO_PRINCIPAL">Prato Principal</option>
                 <option value="SALGADO">Salgado</option>
                 <option value="SOBREMESA">Sobremesa</option>
@@ -154,27 +158,18 @@ export default function AddRecipe() {
               </select>
             </div>
 
-            {/* Tag */}
             <div className="flex flex-col">
-              <label htmlFor="tag" className="mb-1 text-gray-700 dark:text-gray-300 font-medium">Tag (opcional)</label>
-              <select 
-                id="tag"
-                value={tag || ""}
-                onChange={(e) => setTag(e.target.value || null)} 
-                className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
+              <label htmlFor="tag" className="mb-1">Tag</label>
+              <select id="tag" value={tag ?? ""} onChange={(e) => setTag(e.target.value || null)} className="border p-3 rounded">
                 <option value="">Nenhum</option>
                 <option value="DESTAQUE">Destaque</option>
                 <option value="RECENTE">Recente</option>
               </select>
             </div>
           </div>
-        
-          <button 
-            type="submit" 
-            className="w-full bg-green-600 text-white font-semibold py-3 rounded-md hover:bg-green-700 transition-all duration-200 shadow-md"
-          >
-            Salvar
+
+          <button type="submit" className="w-full bg-green-600 text-white py-3 rounded-md">
+            {id ? "Salvar alterações" : "Salvar"}
           </button>
         </form>
       </div>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
+import { motion } from "framer-motion";
+import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 
 interface Recipe {
   id: string;
@@ -11,7 +13,6 @@ interface Recipe {
 export default function RecipeListAdmin() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
-  // Busca todas as receitas ao carregar o componente
   useEffect(() => {
     fetchRecipes();
   }, []);
@@ -33,7 +34,7 @@ export default function RecipeListAdmin() {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Receita removida com sucesso!");
-        fetchRecipes(); // Recarrega a lista
+        fetchRecipes();
       } catch (err) {
         alert("Erro ao remover receita.");
       }
@@ -41,47 +42,43 @@ export default function RecipeListAdmin() {
   }
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">Gerenciar Receitas</h2>
-      <Link 
-        to="/admin/add" 
-        className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-all duration-200 mb-6 inline-block"
-      >
-        + Adicionar Nova Receita
-      </Link>
-      
-      <div className="flex flex-col gap-4">
+    <div className="p-8 max-w-5xl mx-auto">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Gerenciar Receitas</h2>
+        <Link 
+          to="/admin/add" 
+          className="flex items-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+        >
+          <Plus size={18} /> Nova Receita
+        </Link>
+      </div>
+
+      <div className="grid gap-4">
         {recipes.length > 0 ? (
-          recipes.map((recipe) => (
-            <div
+          recipes.map((recipe, index) => (
+            <motion.div
               key={recipe.id}
-              className="bg-white p-4 rounded-lg shadow-md flex justify-between items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md flex justify-between items-center"
             >
               <div>
                 <h3 className="text-lg font-semibold">{recipe.title}</h3>
                 <p className="text-sm text-gray-500">Categoria: {recipe.category}</p>
               </div>
-              <div className="flex gap-2">
-                <Link
-                  to={`/receitas/${recipe.id}`} // Link para a página pública
-                  className="bg-gray-300 text-gray-800 py-1 px-3 rounded-md hover:bg-gray-400"
-                >
-                  Ver
+              <div className="flex gap-3">
+                <Link to={`/receitas/${recipe.id}`} className="p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300">
+                  <Eye size={18} />
                 </Link>
-                <Link
-                  to={`/admin/edit/${recipe.id}`}
-                  className="bg-yellow-500 text-white py-1 px-3 rounded-md hover:bg-yellow-600"
-                >
-                  Editar
+                <Link to={`/admin/edit/${recipe.id}`} className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500">
+                  <Pencil size={18} />
                 </Link>
-                <button
-                  onClick={() => handleDelete(recipe.id)}
-                  className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600"
-                >
-                  Remover
+                <button onClick={() => handleDelete(recipe.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600">
+                  <Trash2 size={18} />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
           <p className="text-center text-gray-500">Nenhuma receita encontrada.</p>
