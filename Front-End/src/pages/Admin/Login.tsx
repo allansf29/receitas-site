@@ -2,13 +2,13 @@ import { useState } from "react";
 import api from "../../services/api";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const res = await api.post("/admin/login", { email, password });
+      const res = await api.post("/admin/login", { username, password });
       localStorage.setItem("token", res.data.token); // guarda o token
       window.location.href = "/admin/dashboard"; // redireciona
     } catch (err) {
@@ -17,7 +17,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen bg-background dark:bg-gray-900">
       <form
         onSubmit={handleLogin}
         className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md w-80 flex flex-col gap-4"
@@ -25,11 +25,11 @@ export default function Login() {
         <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white">Login Admin</h2>
         
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Username"
           className="border p-2 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         
         <input
