@@ -96,16 +96,18 @@ app.post('/admin/recipes', authMiddleware, async (req, res) => {
 });
 
 app.put('/admin/recipes/:id', authMiddleware, async (req, res) => {
-    try {
-        await prisma.recipe.update({
-            where: { id: req.params.id },
-            data: req.body,
-        });
-        res.status(200).json({ message: "Receita editada com sucesso" });
-    } catch (err) {
-        res.status(500).json({ error: "Erro ao editar receita" });
-    }
+  try {
+    const updated = await prisma.recipe.update({
+      where: { id: req.params.id },
+      data: req.body,
+    });
+    res.status(200).json(updated);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao editar receita" });
+  }
 });
+
 
 app.delete('/admin/recipes/:id', authMiddleware, async (req, res) => {
     try {
