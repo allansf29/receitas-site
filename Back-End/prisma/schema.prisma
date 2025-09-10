@@ -6,8 +6,8 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
+
 
 datasource db {
   provider = "mongodb"
@@ -38,4 +38,10 @@ model Recipe {
   time        Int
   portions    Int?     
   tag         RecipeTag?
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  username String @unique
+  password String
 }
