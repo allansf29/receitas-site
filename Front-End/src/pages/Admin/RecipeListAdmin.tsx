@@ -47,7 +47,7 @@ export default function RecipeListAdmin() {
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Gerenciar Receitas</h2>
         <Link 
           to="/admin/add" 
-          className="flex items-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+          className="flex items-center gap-2 bg-primary text-white py-2 px-4 rounded-lg hover:bg-text transition"
         >
           <Plus size={18} /> Nova Receita
         </Link>
@@ -61,20 +61,20 @@ export default function RecipeListAdmin() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md flex justify-between items-center"
+              className="bg-white dark:bg-gray-700 p-5 rounded-lg shadow-md flex justify-between items-center"
             >
               <div>
-                <h3 className="text-lg font-semibold">{recipe.title}</h3>
+                <h3 className="text-lg font-semibold dark:text-white">{recipe.title}</h3>
                 <p className="text-sm text-gray-500">Categoria: {recipe.category}</p>
               </div>
               <div className="flex gap-3">
-                <Link to={`/receitas/${recipe.id}`} className="p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300">
+                <Link to={`/receitas/${recipe.id}`} className="p-2 bg-gray-200 dark:bg-gray-500 rounded hover:bg-gray-300">
                   <Eye size={18} />
                 </Link>
                 <Link to={`/admin/edit/${recipe.id}`} className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500">
                   <Pencil size={18} />
                 </Link>
-                <button onClick={() => handleDelete(recipe.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600">
+                <button onClick={() => handleDelete(recipe.id)} className="p-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
                   <Trash2 size={18} />
                 </button>
               </div>
