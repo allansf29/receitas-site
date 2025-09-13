@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
+import BackButton from "../../components/BackButton";
+import Dashboard from "./Dashboard";
 
 export default function AddEditRecipe() {
   const { id } = useParams<{ id?: string }>();
@@ -103,7 +105,11 @@ export default function AddEditRecipe() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
+      <div className="mb-4">
+        <BackButton />
+      </div>
       <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+
         <h2 className="text-2xl font-bold text-center mb-6 text-text dark:text-white">
           {id ? "Editar Receita" : "Adicionar Receita"}
         </h2>

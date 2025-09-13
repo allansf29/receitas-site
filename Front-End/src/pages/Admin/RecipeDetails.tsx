@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import { motion } from "framer-motion";
+import BackButton from "../../components/BackButton";
 
 interface Recipe {
   title: string;
@@ -37,11 +38,14 @@ export default function RecipeDetails() {
   if (!recipe) return <div className="p-6 text-center">Receita não encontrada.</div>;
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       className="container mx-auto p-6 max-w-4xl"
     >
+      <div className="mb-4">
+        <BackButton />
+      </div>
       <img src={recipe.image} alt={recipe.title} className="w-full h-80 object-cover rounded-lg mb-6 shadow-md" />
       <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">{recipe.title}</h1>
       <p className="text-gray-600 dark:text-gray-400 mb-6">{recipe.description}</p>

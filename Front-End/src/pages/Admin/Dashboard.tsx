@@ -1,28 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ClipboardList, PlusCircle, Home } from "lucide-react";
+import LogoutButton from "./LogoutButton";
 
 export default function Dashboard() {
   return (
     <div className="min-h-screen flex bg-background dark:bg-gray-900">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white flex flex-col p-6 shadow-xl">
-        <h2 className="text-2xl font-bold mb-8 text-center">Painel Admin</h2>
-        <nav className="flex flex-col gap-4">
-          <Link to="/admin/recipes" className="hover:bg-gray-700 p-3 rounded flex items-center gap-2">
-            <ClipboardList size={18} /> Gerenciar Receitas
-          </Link>
-          <Link to="/admin/add" className="hover:bg-gray-700 p-3 rounded flex items-center gap-2">
-            <PlusCircle size={18} /> Nova Receita
-          </Link>
-          <Link to="/" className="hover:bg-gray-700 p-3 rounded flex items-center gap-2">
-            <Home size={18} /> Voltar ao Site
-          </Link>
-        </nav>
-      </aside>
-
-      {/* Conteúdo */}
       <main className="flex-1 p-10">
+        <div className="flex justify-between items-center mb-5">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,6 +16,8 @@ export default function Dashboard() {
         >
           Bem-vindo ao Painel!
         </motion.h1>
+        <LogoutButton />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link to="/admin/recipes" className="block">
