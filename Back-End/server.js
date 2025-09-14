@@ -11,8 +11,37 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://192.168.1.105:5173'],
+    origin: ['http://localhost:5173', 'http://192.168.1.107:5173'],
 }));
+
+// Rota de Registro (Pública)
+app.post('/admin/register', async (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: "Usuário e senha são obrigatórios" });
+    }
+
+    try {
+        // verifica se já existe
+        const existing = await prisma.user.findUnique({ where: { username } });
+        if (existing) {
+            return res.status(400).json({ error: "Usuário já existe" });
+        }
+
+        // hash da senha
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // cria usuário
+        const newUser = await prisma.user.create({
+            data: { username, password: hashedPassword },
+        });
+
+        res.status(201).json({ message: "Usuário criado com sucesso", userId: newUser.id });
+    } catch (err) {
+        res.status(500).json({ error: "Erro ao criar usuário: " + err.message });
+    }
+});
 
 // Rota de Login (Pública)
 app.post('/admin/login', async (req, res) => {
@@ -107,7 +136,6 @@ app.put('/admin/recipes/:id', authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Erro ao editar receita" });
   }
 });
-
 
 app.delete('/admin/recipes/:id', authMiddleware, async (req, res) => {
     try {
