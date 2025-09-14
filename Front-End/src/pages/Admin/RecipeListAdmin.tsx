@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../../services/api";
 import { motion } from "framer-motion";
 import { Eye, Pencil, Trash2, Plus } from "lucide-react";
-import BackButton from "../../components/BackButton";
+import DashboardButton from "./DashboardButton";
 
 interface Recipe {
   id: string;
@@ -45,7 +45,7 @@ export default function RecipeListAdmin() {
   return (
     <div className="p-8 max-w-5xl mx-auto">
       <div className="mb-4">
-        <BackButton />
+        <DashboardButton />
       </div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Gerenciar Receitas</h2>

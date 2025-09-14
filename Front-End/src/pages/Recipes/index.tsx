@@ -134,18 +134,18 @@ export default function Receitas() {
             <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedRecipe.title}
             </h2>
-            <p className="mb-4 font-bold">{selectedRecipe.description}</p>
+            <p className="mb-4 text-primary font-bold">{selectedRecipe.description}</p>
             <img
               className="rounded-lg w-full h-48 object-cover"
               src={selectedRecipe.image}
               alt={selectedRecipe.title}
             />
             <div className="flex justify-between md:flex-row gap-6 mt-4">
-              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400 text-[12px] md:text-base">
                 <TimeIcon />
-                Tempo aproximado: {selectedRecipe.time} minutos
+                Tempo aproximado: {selectedRecipe.time} min
               </p>
-              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+              <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400 text-[12px] md:text-base">
                 <SaladIcon />
                 Porções: {selectedRecipe.portions}
               </p>

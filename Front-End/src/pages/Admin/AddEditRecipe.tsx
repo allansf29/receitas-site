@@ -1,9 +1,7 @@
-// src/pages/Admin/AddEditRecipe.tsx
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import BackButton from "../../components/BackButton";
-import Dashboard from "./Dashboard";
 
 export default function AddEditRecipe() {
   const { id } = useParams<{ id?: string }>();
@@ -11,8 +9,8 @@ export default function AddEditRecipe() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [ingredients, setIngredients] = useState(""); // string shown to user (comma separated)
-  const [preparation, setPreparation] = useState(""); // string shown to user (line separated)
+  const [ingredients, setIngredients] = useState("");
+  const [preparation, setPreparation] = useState("");
   const [category, setCategory] = useState("PRATO_PRINCIPAL");
   const [image, setImage] = useState("");
   const [time, setTime] = useState<number | null>(null);

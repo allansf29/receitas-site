@@ -56,7 +56,7 @@ export default function Footer() {
                     <h3 className="text-lg font-semibold text-primary mb-2">Siga-nos</h3>
                     <div className="flex space-x-6">
                         <motion.a
-                            href="https://www.instagram.com/seu_instagram"
+                            href="https://www.instagram.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.2, rotate: 5 }}
@@ -65,7 +65,7 @@ export default function Footer() {
                             <FaInstagram size={26} />
                         </motion.a>
                         <motion.a
-                            href="https://www.tiktok.com/@seu_tiktok"
+                            href="https://www.tiktok.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.2, rotate: -5 }}
@@ -80,7 +80,11 @@ export default function Footer() {
             {/* Copyright */}
             <div className="mt-10 border-t border-primary/20 dark:border-gray-700 pt-4 text-center">
                 <p className="text-sm text-text dark:text-gray-400">
-                    © {new Date().getFullYear()} Allanv29. Todos os direitos reservados.
+                    © {new Date().getFullYear()}{" "}
+                    <a href="https://allansf29.vercel.app" target="_blank" className="hover:text-red-500 transition-colors">
+                        Allanv29
+                    </a>
+                    . Todos os direitos reservados.
                 </p>
             </div>
         </footer>

@@ -63,7 +63,7 @@ export function SaladIcon(props: React.SVGProps<SVGSVGElement>) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-salad"
+            className="lucide lucide-salad text-[11px] md:text-base"
         >
             <path d="M7 21h10" />
             <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
