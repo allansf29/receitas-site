@@ -38,12 +38,17 @@ const Navbar: React.FC = () => {
       <div className="top-0 left-0 w-full h-3 bg-primary dark:bg-gray-700"></div>
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between relative">
         <a className="flex items-center space-x-2 font-logo">
-          <img src={Logo} alt="Logo Casinha da Ana" className="h-10 w-10 rounded-full" />
+          <motion.img src={Logo} alt="Logo Casinha da Ana"
+            className="h-10 w-10 rounded-full"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          />
           <motion.span
             className="text-2xl font-bold text-primary dark:text-white tracking-wide"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
           >
             Casinha da Ana
           </motion.span>

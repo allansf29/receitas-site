@@ -17,7 +17,7 @@ export default function Login() {
       const res = await api.post("/admin/login", { username, password });
       localStorage.setItem("token", res.data.token);
       // vai pra lista de receitas do admin
-      navigate("/admin/recipes");
+      navigate("/admin/dashboard");
     } catch (err) {
       console.error("Login erro:", err);
       alert("Login inválido!");
