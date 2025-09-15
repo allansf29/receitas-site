@@ -76,7 +76,11 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-gray-800 border-2 border-text dark:border-gray-700 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px] z-50"
+                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-gray-800 border-2 border-text dark:border-gray-700 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px] z-50
+                before:content-[''] before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 
+                before:border-l-8 before:border-r-8 before:border-b-8 
+                before:border-l-transparent before:border-r-transparent 
+              before:border-b-text dark:before:border-b-gray-700"
               >
                 {/* Coluna 1: Filtros */}
                 <div className="flex flex-col space-y-2">

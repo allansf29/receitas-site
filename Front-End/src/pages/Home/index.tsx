@@ -63,7 +63,7 @@ export default function Home() {
                 </p>
                 <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
                   <SaladIcon />
-                 Porções: {selectedRecipe.portions}
+                  Porções: {selectedRecipe.portions}
                 </p>
               </div>
               <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
@@ -130,6 +130,14 @@ export default function Home() {
               </div>
             </motion.div>
           ))}
+        <div className="w-full flex justify-center mt-6">
+          <DrawOutlineButton
+            onClick={() => (window.location.href = "/receitas")}
+            className="bg-primary text-background hover:bg-secondary px-6 py-3 rounded-lg shadow-md"
+          >
+            Ver todas as receitas
+          </DrawOutlineButton>
+        </div>
       </section>
     </>
   );
