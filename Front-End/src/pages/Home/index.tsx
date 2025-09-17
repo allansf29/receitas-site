@@ -7,6 +7,8 @@ import RecipeCard from "../../components/RecipeCard";
 import type { Recipe } from "../../types/index";
 import { motion } from "framer-motion"
 import { DrawOutlineButton } from "../../components/Button";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -99,37 +101,61 @@ export default function Home() {
           Receitas recentes
         </motion.h2>
 
-        {recipes
-          .filter((item) => item.tag && ["RECENTE"].includes(item.tag))
-          .map((item) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col md:flex-row items-center bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border-2 border-dashed border-dark"
-            >
-              {/* Imagem da receita */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full md:w-1/3 h-48 object-cover"
-              />
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="w-full"
+        >
+          {recipes
+            .filter((item) => item.tag && ["RECENTE"].includes(item.tag))
+            .map((item) => (
+              <SwiperSlide key={item.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex flex-col bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden border-2 border-dashed border-dark"
+                >
+                  {/* Imagem da receita */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                  />
 
-              {/* Conteúdo da receita */}
-              <div className="p-6 flex flex-col justify-between w-full md:w-2/3">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {item.description}
-                </p>
-                <DrawOutlineButton onClick={() => setSelectedRecipe(item)} className="bg-primary text-background hover:bg-secondary px-4 py-2 w-fit">
-                  Ver receita
-                </DrawOutlineButton>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Conteúdo da receita */}
+                  <div className="p-6 flex flex-col justify-between">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {item.description}
+                    </p>
+                    <DrawOutlineButton
+                      onClick={() => setSelectedRecipe(item)}
+                      className="bg-primary text-background hover:bg-secondary px-4 py-2 w-fit"
+                    >
+                      Ver receita
+                    </DrawOutlineButton>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+
+        {/* Botão de Ver todas */}
         <div className="w-full flex justify-center mt-6">
           <DrawOutlineButton
             onClick={() => (window.location.href = "/receitas")}
