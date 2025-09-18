@@ -49,10 +49,10 @@ export default function Home() {
         <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
           {selectedRecipe && (
             <div className="p-6 overflow-y-auto max-h-[80vh]">
-              <h2 className="text-2xl font-bold mb-4 text-center">
+              <h2 className="text-2xl font-bold mb-4 text-center dark:text-amber-50">
                 {selectedRecipe.title}
               </h2>
-              <p className="mb-4 text-primary font-bold">{selectedRecipe.description}</p>
+              <p className="mb-4 text-primary dark:text-amber-50 font-bold">{selectedRecipe.description}</p>
               <img
                 className="rounded-lg w-full h-48 object-cover"
                 src={selectedRecipe.image}

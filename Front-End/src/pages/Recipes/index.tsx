@@ -134,7 +134,7 @@ export default function Receitas() {
             <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedRecipe.title}
             </h2>
-            <p className="mb-4 text-primary font-bold">{selectedRecipe.description}</p>
+            <p className="mb-4 text-primary font-bold dark:text-amber-50">{selectedRecipe.description}</p>
             <img
               className="rounded-lg w-full h-48 object-cover"
               src={selectedRecipe.image}

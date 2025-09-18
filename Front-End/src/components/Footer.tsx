@@ -12,7 +12,7 @@ export default function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-2xl font-bold text-primary">Casinha da Ana</h2>
+                    <h2 className="text-2xl font-bold text-primary dark:text-gray-200">Casinha da Ana</h2>
                     <p className="mt-2 text-sm text-text dark:text-gray-400 max-w-xs">
                         Receitas simples, rápidas e deliciosas para o seu dia a dia.
                         Inspire-se e experimente novos sabores!
@@ -26,7 +26,7 @@ export default function Footer() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex flex-col space-y-2"
                 >
-                    <h3 className="text-lg font-semibold text-primary">Navegação</h3>
+                    <h3 className="text-lg font-semibold text-primary dark:text-gray-200">Navegação</h3>
                     <a
                         href="/"
                         className="text-text dark:text-gray-300 hover:text-primary transition-colors"
@@ -53,14 +53,14 @@ export default function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <h3 className="text-lg font-semibold text-primary mb-2">Siga-nos</h3>
+                    <h3 className="text-lg font-semibold text-primary dark:text-gray-200 mb-2">Siga-nos</h3>
                     <div className="flex space-x-6">
                         <motion.a
                             href="https://www.instagram.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.2, rotate: 5 }}
-                            className="text-text dark:text-gray-300 hover:text-primary transition-colors"
+                            className="text-text dark:text-gray-300 hover:text-primary dark:hover:text-gray-400 dark:text-white transition-colors"
                         >
                             <FaInstagram size={26} />
                         </motion.a>
@@ -69,7 +69,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.2, rotate: -5 }}
-                            className="text-text dark:text-gray-300 hover:text-primary transition-colors"
+                            className="text-text dark:text-gray-300 hover:text-primary dark:hover:text-gray-400 dark:text-white transition-colors"
                         >
                             <FaTiktok size={26} />
                         </motion.a>
