@@ -36,7 +36,7 @@ const ThemeToggle = () => {
       <button
         className={`${TOGGLE_CLASSES} ${
           selected === "light"
-            ? "text-white"
+            ? "text-yellow-500"
             : "text-gray-700 dark:text-gray-300 cursor-pointer"
         }`}
         onClick={() => setSelected("light")}
@@ -48,7 +48,7 @@ const ThemeToggle = () => {
       <button
         className={`${TOGGLE_CLASSES} ${
           selected === "dark"
-            ? "text-white"
+            ? "text-purple-500"
             : "text-gray-700 dark:text-gray-300 cursor-pointer"
         }`}
         onClick={() => setSelected("dark")}
@@ -66,7 +66,7 @@ const ThemeToggle = () => {
           <motion.span
             layout
             transition={{ type: "spring", damping: 15, stiffness: 250 }}
-            className="h-full w-1/2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+            className="h-full w-1/2 rounded-full bg-gradient-to-r from-stone-700 to-stone-500"
           />
         </div>
       )}

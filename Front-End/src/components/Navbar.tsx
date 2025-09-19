@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <header className="bg-background shadow-lg sticky top-0 z-50 font-sans dark:bg-gray-900 dark:text-gray-200">
+    <header className="bg-background shadow-lg sticky top-0 z-50 font-sans dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
       <div className="top-0 left-0 w-full h-3 bg-primary dark:bg-gray-700"></div>
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between relative">
         <a className="flex items-center space-x-2 font-logo">
