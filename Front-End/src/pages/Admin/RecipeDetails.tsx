@@ -47,18 +47,18 @@ export default function RecipeDetails() {
         <BackButton />
       </div>
       <img src={recipe.image} alt={recipe.title} className="w-full h-80 object-cover rounded-lg mb-6 shadow-md" />
-      <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-2">{recipe.title}</h1>
+      <h1 className="text-4xl font-bold text-gray-800 dark:text-text-dark mb-2">{recipe.title}</h1>
       <p className="text-gray-600 dark:text-gray-400 mb-6">{recipe.description}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-3">Ingredientes</h2>
+          <h2 className="text-2xl font-semibold mb-3 dark:text-text-dark">Ingredientes</h2>
           <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
             {recipe.ingredients.map((item, i) => <li key={i}>{item}</li>)}
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-3">Preparo</h2>
+          <h2 className="text-2xl font-semibold mb-3 dark:text-text-dark">Preparo</h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300">
             {recipe.preparation.map((step, i) => <li key={i}>{step}</li>)}
           </ol>

@@ -11,7 +11,7 @@ export default function BackToDashboardButton() {
   return (
     <button
       onClick={handleBack}
-      className="flex items-center gap-2 bg-primary text-white hover:bg-text px-4 py-2 rounded-md shadow-md transition-all duration-200 cursor-pointer"
+      className="flex items-center gap-2 bg-primary dark:bg-secondary-dark dark:hover:bg-primary-dark text-white hover:bg-text px-4 py-2 rounded-md shadow-md transition-all duration-200 cursor-pointer"
     >
       <ArrowLeftCircle size={18} />
       Voltar para Dashboard

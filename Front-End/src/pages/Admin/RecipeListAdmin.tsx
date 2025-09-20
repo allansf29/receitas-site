@@ -51,7 +51,7 @@ export default function RecipeListAdmin() {
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Gerenciar Receitas</h2>
         <Link
           to="/admin/add"
-          className="flex items-center gap-2 bg-primary text-white py-2 px-4 rounded-lg hover:bg-text transition"
+          className="flex items-center gap-2 bg-primary dark:bg-secondary-dark text-white py-2 px-4 rounded-lg hover:bg-text dark:hover:bg-primary-dark transition"
         >
           <Plus size={18} /> Nova Receita
         </Link>
@@ -65,7 +65,7 @@ export default function RecipeListAdmin() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-700 p-5 rounded-lg shadow-md flex justify-between items-center"
+              className="bg-white dark:bg-secondary-dark p-5 rounded-lg shadow-md flex justify-between items-center"
             >
               <div>
                 <h3 className="text-lg font-semibold dark:text-white">{recipe.title}</h3>

@@ -106,7 +106,7 @@ export default function AddEditRecipe() {
       <div className="mb-4">
         <BackButton />
       </div>
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-secondary-dark p-8 rounded-xl shadow-lg border border-gray-200 dark:border-primary-dark">
 
         <h2 className="text-2xl font-bold text-center mb-6 text-text dark:text-white">
           {id ? "Editar Receita" : "Adicionar Receita"}
@@ -116,44 +116,44 @@ export default function AddEditRecipe() {
           {/* ... (mesmos inputs do seu formulário, usando os states acima) */}
           <div className="flex flex-col">
             <label htmlFor="title" className="mb-1 text-text dark:text-gray-300 font-medium ">Título</label>
-            <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-gray-700 dark:text-white" />
+            <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-text-dark dark:text-white" />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="description" className="mb-1 text-text dark:text-gray-300">Descrição</label>
-            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="border p-3 rounded min-h-[100px] border-gray-200 dark:border-gray-700 dark:text-white" />
+            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="border p-3 rounded min-h-[100px] border-gray-200 dark:border-text-dark dark:text-white" />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="ingredients" className="mb-1 text-text dark:text-gray-300">Ingredientes (separados por vírgula)</label>
-            <input id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-gray-700 dark:text-white" />
+            <input id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-text-dark dark:text-white" />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="preparation" className="mb-1 text-text dark:text-gray-300">Modo de Preparo (1 passo por linha)</label>
-            <textarea id="preparation" value={preparation} onChange={(e) => setPreparation(e.target.value)} className="border p-3 rounded min-h-[150px] border-gray-200 dark:border-gray-700 dark:text-white" />
+            <textarea id="preparation" value={preparation} onChange={(e) => setPreparation(e.target.value)} className="border p-3 rounded min-h-[150px] border-gray-200 dark:border-text-dark dark:text-white" />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="image" className="mb-1 text-text dark:text-gray-300">URL da Imagem</label>
-            <input id="image" value={image} onChange={(e) => setImage(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-gray-700 dark:text-white" />
+            <input id="image" value={image} onChange={(e) => setImage(e.target.value)} className="border p-3 rounded border-gray-200 dark:border-text-dark dark:text-white" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col text-textdark:text-gray-300">
               <label htmlFor="time" className="mb-1 dark:text-gray-300">Tempo (min)</label>
-              <input id="time" type="number" value={time ?? ""} onChange={(e) => setTime(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded border-gray-200 dark:border-gray-700 dark:text-white" />
+              <input id="time" type="number" value={time ?? ""} onChange={(e) => setTime(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded border-gray-200 dark:border-text-dark dark:text-white" />
             </div>
             <div className="flex flex-col text-text dark:text-gray-300">
               <label htmlFor="portions" className="mb-1 dark:text-gray-300">Porções</label>
-              <input id="portions" type="number" value={portions ?? ""} onChange={(e) => setPortions(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded border-gray-200 dark:border-gray-700 dark:text-white" />
+              <input id="portions" type="number" value={portions ?? ""} onChange={(e) => setPortions(e.target.value ? Number(e.target.value) : null)} className="border p-3 rounded border-gray-200 dark:border-text-dark dark:text-white" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col">
               <label htmlFor="category" className="mb-1 text-text dark:text-gray-300">Categoria</label>
-              <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="border p-3 rounded text-text dark:text-gray-500 border-gray-200 dark:border-gray-700">
+              <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="border p-3 rounded text-text dark:text-text-dark border-gray-200 dark:border-text-dark">
                 <option value="PRATO_PRINCIPAL">Prato Principal</option>
                 <option value="SALGADO">Salgado</option>
                 <option value="SOBREMESA">Sobremesa</option>
@@ -164,7 +164,7 @@ export default function AddEditRecipe() {
 
             <div className="flex flex-col">
               <label htmlFor="tag" className="mb-1 text-gray-700 dark:text-gray-300">Tag</label>
-              <select id="tag" value={tag ?? ""} onChange={(e) => setTag(e.target.value || null)} className="border p-3 rounded text-text dark:text-gray-500 border-gray-200 dark:border-gray-700">
+              <select id="tag" value={tag ?? ""} onChange={(e) => setTag(e.target.value || null)} className="border p-3 rounded text-text dark:text-text-dark border-gray-200 dark:border-text-dark">
                 <option value="">Nenhum</option>
                 <option value="DESTAQUE">Destaque</option>
                 <option value="RECENTE">Recente</option>
@@ -172,7 +172,7 @@ export default function AddEditRecipe() {
             </div>
           </div>
 
-          <button type="submit" className="w-full bg-gray-700 dark:bg-gray-600 text-white py-3 rounded-md">
+          <button type="submit" className="w-full bg-gray-700 dark:bg-primary-dark text-white py-3 rounded-md cursor-pointer">
             {id ? "Salvar alterações" : "Salvar"}
           </button>
         </form>

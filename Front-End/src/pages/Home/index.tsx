@@ -31,7 +31,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="w-full text-3xl font-bold text-center text-text dark:text-amber-50 font-title">
+          className="w-full text-3xl font-bold text-center text-text dark:text-text-dark font-title">
           Receitas em destaque
         </motion.h2>
 
@@ -49,21 +49,21 @@ export default function Home() {
         <Modal isOpen={!!selectedRecipe} isClose={() => setSelectedRecipe(null)}>
           {selectedRecipe && (
             <div className="p-6 overflow-y-auto max-h-[80vh]">
-              <h2 className="text-2xl font-bold mb-4 text-center dark:text-amber-50">
+              <h2 className="text-2xl font-bold mb-4 text-center dark:text-qhite">
                 {selectedRecipe.title}
               </h2>
-              <p className="mb-4 text-primary dark:text-amber-50 font-bold">{selectedRecipe.description}</p>
+              <p className="mb-4 text-primary dark:text-text-dark font-bold">{selectedRecipe.description}</p>
               <img
                 className="rounded-lg w-full h-48 object-cover"
                 src={selectedRecipe.image}
                 alt={selectedRecipe.title}
               />
               <div className="flex justify-between md:flex-row gap-6 mt-4 text-[12px] md:text-base">
-                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-300">
                   <TimeIcon />
                   Tempo aproximado: {selectedRecipe.time} min
                 </p>
-                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-400">
+                <p className="mt-4 flex items-center gap-1 text-gray-700 dark:text-gray-300">
                   <SaladIcon />
                   Porções: {selectedRecipe.portions}
                 </p>
@@ -71,13 +71,13 @@ export default function Home() {
               <h3 className="font-bold text-xl mt-4">Ingredientes</h3>
               <ul className="list-disc pl-5 mt-2">
                 {selectedRecipe.ingredients.map((item, index) => (
-                  <li key={index} className="text-gray-700 dark:text-gray-200 text-sm md:text-base">{item}</li>
+                  <li key={index} className="text-gray-700 dark:text-text-dark text-sm md:text-base">{item}</li>
                 ))}
               </ul>
               <h3 className="font-bold text-xl mt-4">Modo de preparo</h3>
               <ul className="list-decimal pl-5 mt-2">
                 {selectedRecipe.preparation.map((item, index) => (
-                  <li key={index} className=" text-gray-700 dark:text-gray-200">{item}</li>
+                  <li key={index} className=" text-gray-700 dark:text-text-dark">{item}</li>
                 ))}
               </ul>
               <button
@@ -96,7 +96,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2 }}
-          className="w-full p-5 text-3xl font-bold text-center text-text dark:text-amber-50 font-title"
+          className="w-full p-5 text-3xl font-bold text-center text-text dark:text-text-dark font-title"
         >
           Receitas recentes
         </motion.h2>
@@ -126,7 +126,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="flex flex-col bg-background dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden border-2 border-dashed border-dark"
+                  className="flex flex-col bg-background dark:bg-secondary-dark shadow-lg rounded-xl overflow-hidden border-2 border-dashed border-dark"
                 >
                   {/* Imagem da receita */}
                   <img

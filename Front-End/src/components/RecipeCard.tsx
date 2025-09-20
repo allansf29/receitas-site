@@ -13,7 +13,7 @@ export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
         <motion.div
             className="max-w-sm 
             bg-background border- border-secondary rounded-lg shadow-sm 
-            dark:bg-gray-900 dark:text-amber-50 dark:border-gray-700 
+            dark:bg-secondary-dark dark:text-text-dark dark:border-background-dark 
             hover:shadow-lg transition-shadow duration-300 ease-in-out"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -24,14 +24,14 @@ export default function RecipeCard({ recipe, onSelect }: RecipeCardProps) {
             </a>
             <div className="p-5">
                 <a>
-                    <h5 className="mb-3 text-2xl font-bold tracking-tight text-primary dark:text-amber-50">
+                    <h5 className="mb-3 text-2xl font-bold tracking-tight text-primary dark:text-text-dark">
                         {recipe.title}
                     </h5>
                 </a>
-                <p className="mb-3 font-normal text-[var(--color-text)] dark:text-gray-300">
+                <p className="mb-3 font-normal text-[var(--color-text)] dark:text-text-dark">
                     {recipe.description}
                 </p>
-                <p className="flex items-center gap-1 text-secondary dark:text-gray-400 font-medium mb-3">
+                <p className="flex items-center gap-1 text-secondary dark:text-text-dark font-medium mb-3">
                     <TimeIcon />
                     Tempo aproximado: {recipe.time} min
                 </p>

@@ -27,41 +27,41 @@ export default function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-150 bg-background dark:from-gray-900 dark:to-gray-800">
+    <div className="flex items-center justify-center min-h-150 bg-background dark:bg-background-dark">
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.45 }}
-        className="w-full max-w-md bg-background dark:bg-gray-800 p-8 rounded-2xl shadow-xl"
+        className="w-full max-w-md bg-background dark:bg-primary-dark p-8 rounded-2xl shadow-xl"
       >
         <header className="mb-6 text-center">
-          <div className="mx-auto w-16 h-16 rounded-full bg-text flex items-center justify-center text-white mb-3">
+          <div className="mx-auto w-16 h-16 rounded-full bg-text dark:bg-text-dark flex items-center justify-center text-white dark:text-detail-dark mb-3">
             {/* simples "logo" */}
             <span className="font-bold text-xl">Ana</span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Admin Login</h2>
-          <p className="text-sm text-gray-500">Entre com sua conta de administrador</p>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-text-dark">Admin Login</h2>
+          <p className="text-sm text-gray-500 dark:text-text-dark">Entre com sua conta de administrador</p>
         </header>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
-          <label className="flex items-center gap-2 border rounded-lg p-2 focus-within:ring-2 focus-within:ring-text">
-            <User size={18} className="text-gray-400" />
+          <label className="flex items-center gap-2 border rounded-lg p-2 focus-within:ring-2 focus-within:ring-text-dark">
+            <User size={18} className="text-gray-400 dark:text-text-dark" />
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              className="flex-1 bg-transparent outline-none"
+              className="flex-1 bg-transparent outline-none dark:text-text-dark"
             />
           </label>
 
-          <label className="flex items-center gap-2 border rounded-lg p-2 focus-within:ring-2 focus-within:ring-text">
-            <Lock size={18} className="text-gray-400" />
+          <label className="flex items-center gap-2 border rounded-lg p-2 focus-within:ring-2 focus-within:ring-text-dark">
+            <Lock size={18} className="text-gray-400 dark:text-text-dark" />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Senha"
-              className="flex-1 bg-transparent outline-none"
+              className="flex-1 bg-transparent outline-none dark:text-text-dark"
             />
           </label>
 
@@ -69,14 +69,14 @@ export default function Login() {
             type="submit"
             disabled={submitting}
             className={`w-full py-3 rounded-lg text-white font-semibold transition ${
-              submitting ? "bg-secondary cursor-not-allowed" : "bg-primary hover:bg-text"
+              submitting ? "bg-secondary dark:bg-detail-dark cursor-not-allowed" : "bg-primary dark:bg-secondary-dark hover:bg-text dark:hover:bg-primary-dark "
             }`}
           >
             {submitting ? "Entrando..." : "Entrar"}
           </button>
         </form>
 
-        <footer className="mt-4 text-center text-sm text-gray-500">
+        <footer className="mt-4 text-center text-sm text-gray-500 dark:text-text-dark">
           <span>Precisa de ajuda? Fala comigo 😄</span>
         </footer>
       </motion.div>

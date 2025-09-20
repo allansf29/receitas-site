@@ -34,8 +34,8 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <header className="bg-background shadow-lg sticky top-0 z-50 font-sans dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
-      <div className="top-0 left-0 w-full h-3 bg-primary dark:bg-gray-700"></div>
+    <header className="bg-background shadow-lg sticky top-0 z-50 font-sans dark:bg-background-dark dark:text-text-dark transition-colors duration-500">
+      <div className="top-0 left-0 w-full h-3 bg-primary dark:bg-secondary-dark"></div>
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between relative">
         <a className="flex items-center space-x-2 font-logo">
           <motion.img src={Logo} alt="Logo Casinha da Ana"
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 1, delay: 0.8 }}
           />
           <motion.span
-            className="text-2xl font-bold text-primary dark:text-white tracking-wide"
+            className="text-2xl font-bold text-primary dark:text-text-dark tracking-wide"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
 
         {/* Menu Principal (Desktop) */}
         <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
-          <Link to="/" className="text-lg text-text dark:text-white hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
+          <Link to="/" className="text-lg text-text dark:text-text-dark hover:text-secondary dark:hover:text-detail-dark transition-colors duration-200">
             🏠︎ Home
           </Link>
 
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link to="/receitas" className="flex items-center text-lg dark:text-white text-text hover:text-secondary dark:hover:text-gray-400 transition-colors duration-200">
+            <Link to="/receitas" className="flex items-center text-lg dark:text-text-dark text-text hover:text-secondary dark:hover:text-detail-dark transition-colors duration-200">
               🕮 Receitas <span className="ml-1 text-xs">▼</span>
             </Link>
 
@@ -76,35 +76,35 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-gray-800 border-2 border-text dark:border-gray-700 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px] z-50
+                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-secondary-dark border-2 border-text dark:border-primary-dark z-50 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px] z-50
                 before:content-[''] before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 
                 before:border-l-8 before:border-r-8 before:border-b-8 
                 before:border-l-transparent before:border-r-transparent 
-              before:border-b-text dark:before:border-b-gray-700"
+              before:border-b-text dark:before:border-b-primary-dark"
               >
                 {/* Coluna 1: Filtros */}
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-sm uppercase text-text dark:text-gray-400 font-semibold mb-2">Filtros</h3>
+                  <h3 className="text-sm uppercase text-text dark:text-text-dark font-semibold mb-2">Filtros</h3>
 
                   <div
                     onClick={() => handleFiltroClick("PRATO_PRINCIPAL")}
-                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
+                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-primary-dark rounded-md transition-colors duration-200 cursor-pointer"
                   >
                     <span className="mr-3 text-2xl text-yellow-400">🍽️</span>
                     <div className="flex flex-col">
                       <span className="font-medium text-text dark:text-white">Principal</span>
-                      <span className="text-xs text-gray-400">Receitas de pratos principais</span>
+                      <span className="text-xs text-gray-400 dark:text-text-dark">Receitas de pratos principais</span>
                     </div>
                   </div>
 
                   <div
                     onClick={() => handleFiltroClick("SOBREMESA")}
-                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
+                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-primary-dark rounded-md transition-colors duration-200 cursor-pointer"
                   >
                     <span className="mr-3 text-2xl text-red-500">🍮</span>
                     <div className="flex flex-col">
                       <span className="font-medium text-text dark:text-white">Sobremesas</span>
-                      <span className="text-xs text-gray-400">Pudim, mousse, brownies, etc..</span>
+                      <span className="text-xs text-gray-400 dark:text-text-dark">Pudim, mousse, brownies, etc..</span>
                     </div>
                   </div>
                 </div>
@@ -112,27 +112,27 @@ const Navbar: React.FC = () => {
 
                 {/* Coluna 2: Culinárias */}
                 <div className="flex flex-col space-y-2">
-                  <h3 className="text-sm uppercase text-text dark:text-gray-400 font-semibold mb-2">Filtros</h3>
+                  <h3 className="text-sm uppercase text-text dark:text-text-dark font-semibold mb-2">Filtros</h3>
 
                   <div
                     onClick={() => handleFiltroClick("SALGADO")}
-                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
+                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-primary-dark rounded-md transition-colors duration-200 cursor-pointer"
                   >
                     <span className="mr-3 text-2xl text-red-500">🥧</span>
                     <div className="flex flex-col">
                       <span className="font-medium text-text dark:text-white">Salgados</span>
-                      <span className="text-xs text-gray-400">Tortas, coxinhas, pasteis, milho, etc..</span>
+                      <span className="text-xs text-gray-400 dark:text-text-dark">Tortas, coxinhas, pasteis, milho, etc..</span>
                     </div>
                   </div>
 
                   <div
                     onClick={() => handleFiltroClick("DOCE")}
-                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
+                    className="flex items-center p-2 hover:bg-primary dark:hover:bg-primary-dark rounded-md transition-colors duration-200 cursor-pointer"
                   >
                     <span className="mr-3 text-2xl text-yellow-400">🍰</span>
                     <div className="flex flex-col">
                       <span className="font-medium text-text dark:text-white">Doces</span>
-                      <span className="text-xs text-gray-400">Brigadeiro, cocada, Beijinho, etc..</span>
+                      <span className="text-xs text-gray-400 dark:text-text-dark">Brigadeiro, cocada, Beijinho, etc..</span>
                     </div>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-          <Link to="/sobre" className="text-lg hover:text-secondary text-text dark:text-white dark:hover:text-gray-400 transition-colors duration-200">
+          <Link to="/sobre" className="text-lg hover:text-secondary text-text dark:text-text-dark dark:hover:text-detail-dark transition-colors duration-200">
             🔍︎ Sobre
           </Link>
         </div>

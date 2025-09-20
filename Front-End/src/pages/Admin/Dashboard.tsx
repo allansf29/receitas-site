@@ -5,7 +5,7 @@ import LogoutButton from "./LogoutButton";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen flex bg-background dark:bg-gray-900">
+    <div className="min-h-screen flex bg-background dark:bg-background-dark">
       <main className="flex-1 p-10">
         <div className="flex justify-between items-center mb-5">
         <motion.h1
@@ -23,7 +23,7 @@ export default function Dashboard() {
           <Link to="/admin/recipes" className="block">
             <motion.div
               whileHover={{ scale: 1.03 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
+              className="bg-white dark:bg-primary-dark p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
             >
               <ClipboardList className="mx-auto mb-3 text-blue-600" size={34} />
               <h3 className="text-lg font-semibold text-text dark:text-white">Gerenciar Receitas</h3>
@@ -34,7 +34,7 @@ export default function Dashboard() {
           <Link to="/admin/add" className="block">
             <motion.div
               whileHover={{ scale: 1.03 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
+              className="bg-white dark:bg-primary-dark p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
             >
               <PlusCircle className="mx-auto mb-3 text-green-600" size={34} />
               <h3 className="text-lg font-semibold text-text dark:text-white">Adicionar Receita</h3>
@@ -45,7 +45,7 @@ export default function Dashboard() {
           <Link to="/" className="block">
             <motion.div
               whileHover={{ scale: 1.03 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
+              className="bg-white dark:bg-primary-dark p-6 rounded-xl shadow-md text-center h-full flex flex-col justify-center"
             >
               <Home className="mx-auto mb-3 text-purple-600" size={34} />
               <h3 className="text-lg font-semibold text-text dark:text-white">Voltar ao Site</h3>

@@ -48,7 +48,7 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
               bg-[var(--color-background)] text-[var(--color-text)] border border-[var(--color-primary)]
               rounded-2xl shadow-xl 
               w-[90%] max-w-3xl
-              dark:bg-gray-800 dark:text-amber-50 dark:border-gray-700"
+              dark:bg-primary-dark dark:text-amber-50 dark:border-secondary-dark"
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 30 }}

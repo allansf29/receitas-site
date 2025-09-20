@@ -52,7 +52,7 @@ export default function Receitas() {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-4">
-      <h2 className="text-3xl font-bold text-center mb-6 text-text dark:text-amber-50">
+      <h2 className="text-3xl font-bold text-center mb-6 text-text dark:text-text-dark font-title">
         Todas as Receitas
       </h2>
 
@@ -67,7 +67,7 @@ export default function Receitas() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full md:w-64 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
-               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+               bg-background dark:bg-primary-dark dark:border-secondary-dark dark:text-text-dark
                focus:outline-none "
         />
 
@@ -78,7 +78,7 @@ export default function Receitas() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="w-full md:w-48 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
-               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300
+               bg-background dark:bg-primary-dark dark:border-secondary-dark dark:text-text-dark
                focus:outline-none"
         >
           <option value="all">Todas</option>
@@ -98,7 +98,7 @@ export default function Receitas() {
             setMaxTime(e.target.value ? parseInt(e.target.value) : null)
           }
           className="w-full md:w-56 px-4 py-2 rounded-xl border border-primary/50 shadow-sm 
-               bg-background dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300
+               bg-background dark:bg-primary-dark dark:border-secondary-dark dark:text-text-dark
                focus:outline-none"
         >
           <option value="">⏱️ Sem limite de tempo</option>
