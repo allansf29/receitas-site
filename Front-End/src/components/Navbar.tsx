@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-secondary-dark border-2 border-text dark:border-primary-dark z-50 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px] z-50
+                className="absolute left-1/2 -translate-x-1/2 mt-4 p-4 rounded-lg shadow-xl bg-background dark:bg-secondary-dark border-2 border-text dark:border-primary-dark z-50 grid grid-cols-2 gap-x-8 gap-y-4 w-[400px]
                 before:content-[''] before:absolute before:-top-2 before:left-1/2 before:-translate-x-1/2 
                 before:border-l-8 before:border-r-8 before:border-b-8 
                 before:border-l-transparent before:border-r-transparent 
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
         <div className="md:hidden flex items-center space-x-4">
 
           <button onClick={toggleMenu} className="text-primary dark:text-white focus:outline-none z-[1000]">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8 dark:text-detail-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
             </svg>
           </button>
@@ -177,31 +177,31 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 right-0 top-0 md:hidden bg-text dark:bg-gray-800 py-4 z-50"
+            className="fixed left-0 right-0 top-0 md:hidden bg-text dark:bg-primary-dark py-4 z-50"
             onClick={(e) => e.stopPropagation()} // evita fechar ao clicar dentro do menu
           >
 
-            <Link to="/" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
+            <Link to="/" className="block w-50 px-6 py-3 text-lg text-primary dark:text-text-dark hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
               Home
             </Link>
-            <Link to="/receitas" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
+            <Link to="/receitas" className="block w-50 px-6 py-3 text-lg text-primary dark:text-text-dark hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
               Receitas
             </Link>
-            <Link to="/sobre" className="block w-50 px-6 py-3 text-lg text-primary dark:text-white hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
+            <Link to="/sobre" className="block w-50 px-6 py-3 text-lg text-primary dark:text-text-dark hover:bg-gray-700 transition-colors duration-200" onClick={toggleMenu}>
               Sobre
             </Link>
             <div className="border-t border-primary dark:border-gray-700 my-2"></div>
 
             {/* Seção de Filtros Mobile */}
             <div className="px-6">
-              <h3 className="text-sm uppercase text-background dark:text-gray-400 font-semibold mb-2">Filtros</h3>
+              <h3 className="text-sm uppercase text-background dark:text-detail-dark font-semibold mb-2">Filtros</h3>
               <div className="grid grid-cols-2 gap-2">
                 <div
                   onClick={() => {
                     handleFiltroClick("PRATO_PRINCIPAL");
                     toggleMenu();
                   }}
-                  className="flex items-center justify-center py-2 text-background bg-primary dark:bg-gray-700 rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+                  className="flex items-center justify-center py-2 text-background dark:text-text-dark bg-primary dark:bg-secondary-dark rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
                 >
                   <span className="text-xl mr-2">🍽️</span> Prato Principal
                 </div>
@@ -211,7 +211,7 @@ const Navbar: React.FC = () => {
                     handleFiltroClick("SOBREMESA");
                     toggleMenu();
                   }}
-                  className="flex items-center justify-center py-2 text-background bg-primary dark:bg-gray-700 rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+                  className="flex items-center justify-center py-2 text-background dark:text-text-dark bg-primary dark:bg-secondary-dark rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
                 >
                   <span className="text-xl mr-2">🍮</span> Sobremesas
                 </div>
@@ -221,7 +221,7 @@ const Navbar: React.FC = () => {
                     handleFiltroClick("SALGADO");
                     toggleMenu();
                   }}
-                  className="flex items-center justify-center py-2 text-background bg-primary dark:bg-gray-700 rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+                  className="flex items-center justify-center py-2 text-background dark:text-text-dark bg-primary dark:bg-secondary-dark rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
                 >
                   <span className="text-xl mr-2">🥧</span> Salgados
                 </div>
@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
                     handleFiltroClick("DOCE");
                     toggleMenu();
                   }}
-                  className="flex items-center justify-center py-2 text-background bg-primary dark:bg-gray-700 rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
+                  className="flex items-center justify-center py-2 text-background dark:text-text-dark bg-primary dark:bg-secondary-dark rounded-md hover:bg-gray-600 transition-colors duration-200 cursor-pointer"
                 >
                   <span className="text-xl mr-2">🍰</span> Doces
                 </div>

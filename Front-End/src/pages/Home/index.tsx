@@ -165,6 +165,112 @@ export default function Home() {
           </DrawOutlineButton>
         </div>
       </section>
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12 font-title text-text dark:text-text-dark"
+          >
+            Dicas Úteis na Cozinha
+          </motion.h2>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Dica 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center shadow-lg bg-background dark:bg-secondary-dark hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🌿</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Conserve ervas frescas</h3>
+              <p className="text-sm dark:text-text-dark">
+                Guarde salsinha e coentro em copo com água e cubra levemente com plástico. Duram bem mais!
+              </p>
+            </motion.div>
+
+            {/* Dica 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center bg-background dark:bg-secondary-dark shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🥚</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Ovo estragado?</h3>
+              <p className="text-sm dark:text-text-dark">
+                Coloque o ovo em um copo com água: se afundar, está bom; se boiar, descarte.
+              </p>
+            </motion.div>
+
+            {/* Dica 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center bg-background dark:bg-secondary-dark shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🍚</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Arroz soltinho</h3>
+              <p className="text-sm dark:text-text-dark">
+                Adicione algumas gotas de limão ou um fio de óleo durante o cozimento para evitar que grude.
+              </p>
+            </motion.div>
+
+            {/* Dica 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center bg-background dark:bg-secondary-dark shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🥩</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Amaciar carne</h3>
+              <p className="text-sm dark:text-text-dark">
+                Use suco de limão ou vinagre no tempero, eles ajudam a deixar a carne mais macia.
+              </p>
+            </motion.div>
+
+            {/* Dica 5 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center bg-background dark:bg-secondary-dark shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🧄</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Descascar alho fácil</h3>
+              <p className="text-sm dark:text-text-dark">
+                Coloque os dentes de alho em um pote, agite bem e a casca solta sozinha.
+              </p>
+            </motion.div>
+
+            {/* Dica 6 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="rounded-2xl p-6 text-center bg-background dark:bg-secondary-dark shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="text-4xl mb-3">🥔</div>
+              <h3 className="text-lg font-semibold mb-2 text-primary dark:text-white">Batata sem escurecer</h3>
+              <p className="text-sm dark:text-text-dark">
+                Ao descascar batatas, deixe-as em água com algumas gotas de vinagre ou limão para não escurecerem.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
