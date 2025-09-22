@@ -13,6 +13,8 @@ interface Recipe {
 
 export default function RecipeListAdmin() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [recipeToDelete, setRecipeToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetchRecipes();
@@ -27,19 +29,24 @@ export default function RecipeListAdmin() {
     }
   }
 
-  async function handleDelete(id: string) {
-    if (window.confirm("Tem certeza que deseja remover esta receita?")) {
-      try {
-        const token = localStorage.getItem("token");
-        await api.delete(`/admin/recipes/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        alert("Receita removida com sucesso!");
-        fetchRecipes();
-      } catch (err) {
-        alert("Erro ao remover receita.");
-      }
+  async function confirmDelete() {
+    if (!recipeToDelete) return;
+    try {
+      const token = localStorage.getItem("token");
+      await api.delete(`/admin/recipes/${recipeToDelete}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setShowConfirm(false);
+      setRecipeToDelete(null);
+      fetchRecipes();
+    } catch (err) {
+      alert("Erro ao remover receita.");
     }
+  }
+
+  function handleDeleteClick(id: string) {
+    setRecipeToDelete(id);
+    setShowConfirm(true);
   }
 
   return (
@@ -48,7 +55,9 @@ export default function RecipeListAdmin() {
         <DashboardButton />
       </div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Gerenciar Receitas</h2>
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+          Gerenciar Receitas
+        </h2>
         <Link
           to="/admin/add"
           className="flex items-center gap-2 bg-primary dark:bg-secondary-dark text-white py-2 px-4 rounded-lg hover:bg-text dark:hover:bg-primary-dark transition"
@@ -72,13 +81,22 @@ export default function RecipeListAdmin() {
                 <p className="text-sm text-gray-500">Categoria: {recipe.category}</p>
               </div>
               <div className="flex gap-3">
-                <Link to={`/receitas/${recipe.id}`} className="p-2 bg-gray-200 dark:bg-gray-500 rounded hover:bg-gray-300">
+                <Link
+                  to={`/receitas/${recipe.id}`}
+                  className="p-2 bg-gray-200 dark:bg-gray-500 rounded hover:bg-gray-300"
+                >
                   <Eye size={18} />
                 </Link>
-                <Link to={`/admin/edit/${recipe.id}`} className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500">
+                <Link
+                  to={`/admin/edit/${recipe.id}`}
+                  className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                >
                   <Pencil size={18} />
                 </Link>
-                <button onClick={() => handleDelete(recipe.id)} className="p-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
+                <button
+                  onClick={() => handleDeleteClick(recipe.id)}
+                  className="p-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer"
+                >
                   <Trash2 size={18} />
                 </button>
               </div>
@@ -88,6 +106,31 @@ export default function RecipeListAdmin() {
           <p className="text-center text-gray-500">Nenhuma receita encontrada.</p>
         )}
       </div>
+
+      {/* Modal de confirmação */}
+      {showConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+          <div className="bg-white dark:bg-secondary-dark p-6 rounded-lg shadow-lg w-80">
+            <h3 className="text-lg font-semibold mb-4 dark:text-white">
+              Tem certeza que deseja excluir?
+            </h3>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setShowConfirm(false)}
+                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600"
+              >
+                Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
