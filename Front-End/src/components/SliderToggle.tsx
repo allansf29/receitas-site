@@ -34,11 +34,10 @@ const ThemeToggle = () => {
     <div className="relative flex items-center rounded-full border border-primary dark:border-secondary-dark transition-colors duration-500">
       {/* Light */}
       <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "light"
+        className={`${TOGGLE_CLASSES} ${selected === "light"
             ? "text-yellow-500"
             : "text-gray-700 dark:text-gray-300 cursor-pointer"
-        }`}
+          }`}
         onClick={() => setSelected("light")}
       >
         <FiSun className="text-lg" />
@@ -46,11 +45,10 @@ const ThemeToggle = () => {
 
       {/* Dark */}
       <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "dark"
+        className={`${TOGGLE_CLASSES} ${selected === "dark"
             ? "text-purple-500"
             : "text-gray-700 dark:text-gray-300 cursor-pointer"
-        }`}
+          }`}
         onClick={() => setSelected("dark")}
       >
         <FiMoon className="text-lg" />
@@ -59,15 +57,16 @@ const ThemeToggle = () => {
       {/* Background animado */}
       {selected && (
         <div
-          className={`absolute inset-0 z-0 flex ${
-            selected === "dark" ? "justify-end" : "justify-start"
-          }`}
+          className={`absolute inset-0 z-0 flex ${selected === "dark" ? "justify-end" : "justify-start"
+            }`}
         >
           <motion.span
-            layout
-            transition={{ type: "spring", damping: 15, stiffness: 250 }}
-            className="h-full w-1/2 rounded-full bg-gradient-to-r from-stone-700 to-stone-500"
+            initial={{ x: selected === "dark" ? "100%" : "0%" }}
+            animate={{ x: selected === "dark" ? "100%" : "0%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="absolute top-0 left-0 h-full w-1/2 rounded-full bg-gradient-to-r from-stone-700 to-stone-500"
           />
+
         </div>
       )}
     </div>
