@@ -55,7 +55,7 @@ export default function RecipeListAdmin() {
         <DashboardButton />
       </div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl font-title">
           Gerenciar Receitas
         </h2>
         <Link
@@ -78,12 +78,12 @@ export default function RecipeListAdmin() {
             >
               <div>
                 <h3 className="text-lg font-semibold dark:text-white">{recipe.title}</h3>
-                <p className="text-sm text-gray-500">Categoria: {recipe.category}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Categoria: {recipe.category}</p>
               </div>
               <div className="flex gap-3">
                 <Link
                   to={`/receitas/${recipe.id}`}
-                  className="p-2 bg-gray-200 dark:bg-gray-500 rounded hover:bg-gray-300"
+                  className="p-2 bg-gray-200 dark:bg-gray-400 rounded hover:bg-gray-300"
                 >
                   <Eye size={18} />
                 </Link>
