@@ -29,19 +29,19 @@ export default function Footer() {
                     <h3 className="text-lg font-semibold text-primary dark:text-text-dark font-title">Navegação</h3>
                     <a
                         href="/"
-                        className="text-text dark:text-text-dark hover:text-primary transition-colors"
+                        className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
                     >
                         Início
                     </a>
                     <a
                         href="/sobre"
-                        className="text-text dark:text-text-dark hover:text-primary transition-colors"
+                        className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
                     >
                         Sobre
                     </a>
                     <a
                         href="/receitas"
-                        className="text-text dark:text-text-dark hover:text-primary transition-colors"
+                        className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
                     >
                         Receitas
                     </a>

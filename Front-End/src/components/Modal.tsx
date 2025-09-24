@@ -59,7 +59,7 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
               onClick={() => isClose(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <CloseIcon className="h-6 w-6 text-[var(--color-detail)] dark:text-red-500" />
+              <CloseIcon className="h-6 w-6 text-detail hover:text-red-800 dark:text-detail-dark dark:hover:text-red-900" />
             </button>
 
             {children}
