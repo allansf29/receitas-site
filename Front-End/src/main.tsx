@@ -13,6 +13,7 @@ import Dashboard from './pages/Admin/Dashboard';
 import AddEditRecipe from './pages/Admin/AddEditRecipe';
 import RecipeListAdmin from './pages/Admin/RecipeListAdmin';
 import RecipeDetails from './pages/Admin/RecipeDetails';
+import ScrollToTop from '../src/components/ScrollToTop';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -22,6 +23,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop /> 
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
