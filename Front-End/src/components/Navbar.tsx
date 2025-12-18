@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
         {/* Menu Principal (Desktop) */}
         <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
           <Link to="/" className="text-lg text-text dark:text-text-dark hover:text-secondary dark:hover:text-detail-dark transition-colors duration-200">
-            🏠︎ Home
+            🏠︎ Início
           </Link>
 
           {/* Container para o Dropdown */}

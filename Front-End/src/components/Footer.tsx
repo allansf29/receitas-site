@@ -34,16 +34,16 @@ export default function Footer() {
                         Início
                     </a>
                     <a
-                        href="/sobre"
-                        className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
-                    >
-                        Sobre
-                    </a>
-                    <a
                         href="/receitas"
                         className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
                     >
                         Receitas
+                    </a>
+                    <a
+                        href="/sobre"
+                        className="text-text dark:text-text-dark hover:text-primary dark:hover:text-detail-dark transition-colors"
+                    >
+                        Sobre
                     </a>
                 </motion.div>
 
